@@ -23,6 +23,7 @@ class RolePermissionSeeder extends Seeder
             'view-pengajuan',
             'create-pengajuan',
             'edit-pengajuan',
+            'edit-status-pengajuan',
             'hapus-pengajuan',
             'create-akun',
             'view-akun',
@@ -51,7 +52,7 @@ class RolePermissionSeeder extends Seeder
 
         $permissionBpp = [
             'view-pengajuan',
-            'edit-pengajuan',
+            'edit-status-pengajuan',
             'view-akun',
             'update-akun',
             'view-bantuan',
@@ -65,7 +66,7 @@ class RolePermissionSeeder extends Seeder
 
         $permissionDinas = [
             'view-pengajuan',
-            'edit-pengajuan',
+            'edit-status-pengajuan',
             'view-akun',
             'create-akun',
             'update-akun',

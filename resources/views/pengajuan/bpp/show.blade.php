@@ -1,0 +1,1 @@
+<p>{{ $pengajuan->kode }}</p>

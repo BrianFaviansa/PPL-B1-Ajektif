@@ -21,7 +21,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-   
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,5 +45,10 @@ class User extends Authenticatable
 
     public function desa() {
         return $this->belongsTo(Desa::class);
+    }
+
+    public function pengajuan()
+    {
+        return $this->hasMany(Pengajuan::class);
     }
 }

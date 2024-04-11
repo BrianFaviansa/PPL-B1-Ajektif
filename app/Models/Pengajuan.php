@@ -60,4 +60,9 @@ class Pengajuan extends Model
     {
         $this->attributes['surat_dinas_uploaded_at'] = $value;
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

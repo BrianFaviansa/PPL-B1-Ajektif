@@ -23,11 +23,11 @@ class PengajuanController extends Controller
             return view('pengajuan.poktan.index', compact('user', 'pengajuans'));
         }
         if ($request->user()->hasRole('bpp')) {
-            $pengajuans = Pengajuan::all();
+            $pengajuans = Pengajuan::with('user')->get();;
             return view('pengajuan.bpp.index', compact('user', 'pengajuans'));
         }
         if ($request->user()->hasRole('dinas')) {
-            $pengajuans = Pengajuan::all();
+            $pengajuans = Pengajuan::with('user')->get();;
             return view('pengajuan.dinas.index', compact('user', 'pengajuans'));
         }
 }
@@ -82,7 +82,8 @@ class PengajuanController extends Controller
      */
     public function show(Pengajuan $pengajuan)
     {
-        //
+
+        return view('pengajuan.bpp.show', compact('pengajuan'));
     }
 
     /**
@@ -122,6 +123,17 @@ class PengajuanController extends Controller
         $pengajuan->update($validatedData);
 
         return redirect()->route('pengajuan.index')->with('success', 'Pengajuan Bantuan berhasil diperbarui!');
+    }
+
+    public function updateStatus(Request $request, Pengajuan $pengajuan)
+    {
+        $validatedData = $request->validate([
+            'status' => 'required',
+        ]);
+
+        $pengajuan->update($validatedData);
+
+        return redirect()->route('pengajuan.index')->with('success', 'Status pengajuan berhasil diperbarui!');
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.app-dashboard')
 
 @section('content')
-<div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:container sm:mx-auto">
+<div class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 sm:container sm:mx-auto mb-6">
     <ul class="justify-center md:gap-x-14 flex flex-wrap text-sm font-medium text-center text-gray-500 border-b border-gray-200 rounded-t-lg bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" id="defaultTab" data-tabs-toggle="#defaultTabContent" role="tablist">
         <li class="me-2">
             <button id="about-tab" data-tabs-target="#about" type="button" role="tab" aria-controls="about" aria-selected="true" class="inline-block p-4 text-blue-600 rounded-ss-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-blue-500">Informasi Bantuan</button>
@@ -44,7 +44,7 @@
 
 @role('poktan')
 <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-    <a href="{{ route('login') }}" type="button"
+    <a href="{{ route('pengajuan.index') }}" type="button"
         class="text-white bg-green-900 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-green-800 dark:hover:bg-green-900 dark:focus:ring-green-800">Ajukan Bantuan</a>
     <button data-collapse-toggle="navbar-sticky" type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
@@ -60,12 +60,11 @@
 @endrole
 @role('bpp')
 <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-    <a href="{{ route('login') }}" type="button"
-        class="text-white bg-green-900 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-green-800 dark:hover:bg-green-900 dark:focus:ring-green-800">Kelola Bantuan</a>
+    <a href="#" type="button"
+        class="text-white bg-green-900 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm px-4 py-2 text-center dark:bg-green-800 dark:hover:bg-green-900 dark:focus:ring-green-800">Kelola Informasi Bantuan</a>
     <button data-collapse-toggle="navbar-sticky" type="button"
         class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
         aria-controls="navbar-sticky" aria-expanded="false">
-        <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
             viewBox="0 0 17 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

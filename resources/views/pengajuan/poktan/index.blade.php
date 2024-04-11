@@ -16,7 +16,7 @@
 
     @if ($pengajuans ?? false)
         <div class="mt-6">
-            @include('pengajuan.partials.table')
+            @include('pengajuan.poktan.table')
         </div>
     @endif
 @endsection
