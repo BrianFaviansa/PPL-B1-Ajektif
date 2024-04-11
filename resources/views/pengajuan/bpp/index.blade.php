@@ -13,4 +13,7 @@
     <div class="mt-6">
         @include('pengajuan.bpp.table')
     </div>
+
 @endsection
+
+

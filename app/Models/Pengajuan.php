@@ -16,7 +16,9 @@ class Pengajuan extends Model
         'alasan_pengajuan',
         'dokumen_pengajuan',
         'status',
-        'penanggung_jawab',
+        'tanggapan_bpp',
+        'tanggapan_dinas',
+        'penanggung_jawab_id',
         'surat_poktan',
         'surat_dinas',
         'user_id',
@@ -64,5 +66,10 @@ class Pengajuan extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function penanggung_jawab()
+    {
+        return $this->belongsTo(User::class, 'penanggung_jawab_id');
     }
 }

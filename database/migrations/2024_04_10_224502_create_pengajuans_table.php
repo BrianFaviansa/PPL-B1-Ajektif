@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('penanggung_jawab_id')->nullable();
+            $table->unsignedBigInteger('penanggung_jawab_id')->nullable();
+            $table->foreign('penanggung_jawab_id')->references('id')->on('users');
             $table->string('kode');
             $table->string('nama_alsintan');
             $table->enum('jenis_alsintan', ['Alat Berat', 'Alat Ringan']);

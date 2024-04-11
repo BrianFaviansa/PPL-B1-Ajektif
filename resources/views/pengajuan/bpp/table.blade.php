@@ -70,7 +70,11 @@
                         {{ $pengajuan->status }}
                     </td>
                     <td class="px-6 py-4">
-
+                        @if (isset($pengajuan->penanggung_jawab->nama))
+                            {{ $pengajuan->penanggung_jawab->nama }}
+                        @else
+                            -
+                        @endif
                     </td>
                     <td class="px-6 py-4">
                         <a href="{{ route('pengajuan.show', $pengajuan) }}"

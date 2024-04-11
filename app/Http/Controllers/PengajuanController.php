@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Pengajuan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -24,13 +25,14 @@ class PengajuanController extends Controller
         }
         if ($request->user()->hasRole('bpp')) {
             $pengajuans = Pengajuan::with('user')->get();;
+            $penanggung_jawab_ids = $pengajuans->pluck('penanggung_jawab_id');
             return view('pengajuan.bpp.index', compact('user', 'pengajuans'));
         }
         if ($request->user()->hasRole('dinas')) {
             $pengajuans = Pengajuan::with('user')->get();;
             return view('pengajuan.dinas.index', compact('user', 'pengajuans'));
         }
-}
+    }
 
 
 
@@ -82,8 +84,10 @@ class PengajuanController extends Controller
      */
     public function show(Pengajuan $pengajuan)
     {
+        $user = auth()->user();
+        $pengajuans = Pengajuan::with('user')->get();;
 
-        return view('pengajuan.bpp.show', compact('pengajuan'));
+        return view('pengajuan.bpp.show', compact('user', 'pengajuan'));
     }
 
     /**
@@ -127,9 +131,9 @@ class PengajuanController extends Controller
 
     public function updateStatus(Request $request, Pengajuan $pengajuan)
     {
-        $validatedData = $request->validate([
-            'status' => 'required',
-        ]);
+        $validatedData['status'] = $request->status;
+        $validatedData['penanggung_jawab_id'] = $request->user()->id;
+        $validatedData['tanggapan_bpp'] = $request->tanggapan_bpp;
 
         $pengajuan->update($validatedData);
 
