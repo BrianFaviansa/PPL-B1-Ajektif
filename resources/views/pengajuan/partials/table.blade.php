@@ -9,7 +9,7 @@
                     Tanggal Pengajuan
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Kode Pengajuan
+                    Kode
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Jenis Alsintan
@@ -21,10 +21,7 @@
                     Tanggal Disetujui
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Status Tingkat 1
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Status Tingkat 2
+                    Status
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Aksi
@@ -38,13 +35,13 @@
                         {{ $loop->iteration }}
                     </td>
                     <td class="px-6 py-4">
-
+                        {{ $pengajuan->created_at->format('d F Y') }}
                     </td>
                     <td class="px-6 py-4">
-
+                        {{ $pengajuan->kode }}
                     </td>
                     <td class="px-6 py-4">
-
+                        {{ $pengajuan->jenis_alsintan }}
                     </td>
                     <td class="px-6 py-4">
                         @if ($pengajuan->dokumen_pengajuan)
@@ -60,13 +57,14 @@
                         @endif
                     </td>
                     <td class="px-6 py-4">
-
+                        @if($pengajuan->status == 'disetujui')
+                            $pengajuan->disetujui_at
+                        @else
+                            -
+                        @endif
                     </td>
                     <td class="px-6 py-4">
-
-                    </td>
-                    <td class="px-6 py-4">
-
+                        {{ $pengajuan->status }}
                     </td>
                     <td class="px-6 py-4">
                         <a href="{{ route('pengajuan.edit', $pengajuan->id) }}"
@@ -81,6 +79,21 @@
                                     d="M19.846 4.318a2.148 2.148 0 0 0-.437-.692 2.014 2.014 0 0 0-.654-.463 1.92 1.92 0 0 0-1.544 0 2.014 2.014 0 0 0-.654.463l-.546.578 2.852 3.02.546-.579a2.14 2.14 0 0 0 .437-.692 2.244 2.244 0 0 0 0-1.635ZM17.45 8.721 14.597 5.7 9.82 10.76a.54.54 0 0 0-.137.27l-.536 2.84c-.07.37.239.696.588.622l2.682-.567a.492.492 0 0 0 .255-.145l4.778-5.06Z"
                                     clip-rule="evenodd" />
                             </svg>Ubah
+                        </a>
+                        <form action="{{ route('pengajuan.destroy', $pengajuan) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">
+                                <svg class="w-[18px] h-[18px] text-white dark:text-white mr-1" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z"
+                                        clip-rule="evenodd" />
+                                </svg>Hapus
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @empty

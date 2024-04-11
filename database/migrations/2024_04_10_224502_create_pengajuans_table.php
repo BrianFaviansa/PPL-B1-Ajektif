@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->foreignId('penanggung_jawab_id')->nullable();
             $table->string('kode');
             $table->string('nama_alsintan');
-            $table->enum('jenis_alsintan', ['alat berat', 'alat ringan']);
+            $table->enum('jenis_alsintan', ['Alat Berat', 'Alat Ringan']);
             $table->text('alasan_pengajuan');
             $table->string('dokumen_pengajuan');
-            $table->enum('status', ['disetujui', 'belum disetujui'])->default('belum disetujui');
-            $table->string('penanggung_jawab')->nullable();
+            $table->enum('status', ['Disetujui', 'Belum disetujui'])->default('Belum disetujui');
             $table->string('surat_poktan')->nullable();
             $table->string('surat_dinas')->nullable();
             $table->timestamps();

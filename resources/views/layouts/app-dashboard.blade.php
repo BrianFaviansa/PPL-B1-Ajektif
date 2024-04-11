@@ -47,10 +47,10 @@
                             id="dropdown-user">
                             <div class="px-4 py-3" role="none">
                                 <p class="text-sm text-gray-900 dark:text-white" role="none">
-                                    {{ $user->profile->nama }}
+                                    {{ $user->nama }}
                                 </p>
                                 <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                                    {{ $user->profile->desa->nama }}
+                                    {{ $user->desa->nama }}
                                 </p>
                             </div>
                             <ul class="py-1" role="none">
@@ -83,9 +83,17 @@
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
                 <li>
-                    <a href="{{ route('pengajuan.index') }}"
+                    <a href="{{ route('dashboard') }}" class="{{ (Route::is('dashboard')) ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : ''}} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <svg class="{{ (Route::is('dashboard')) ? 'text-white' : '' }} w-[24px] h-[24px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
+                          </svg>
+                       <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
+                    </a>
+                 </li>
+                <li>
+                    <a href="{{ route('pengajuan.index')}}"
                         class="{{ (Route::is('pengajuan.*')) ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : ''}}  flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        <svg class="{{ (Route::is('pengajuan.*')) ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path fill-rule="evenodd"
@@ -156,7 +164,7 @@
     </div>
     </div>
     <div class="mt-auto">
-        @include('layouts.partials.footer')
+        @include('layouts.landing.footer')
     </div>
 </body>
 

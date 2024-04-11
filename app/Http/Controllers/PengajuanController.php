@@ -5,23 +5,43 @@ namespace App\Http\Controllers;
 use App\Models\Pengajuan;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PengajuanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-    }
+        $user = auth()->user();
+
+        if ($request->user()->hasRole('poktan')) {
+            $pengajuans = Pengajuan::where('user_id', $user->id)
+            ->orderByDesc('created_at')
+            ->get();
+            return view('pengajuan.poktan.index', compact('user', 'pengajuans'));
+        }
+        if ($request->user()->hasRole('bpp')) {
+            $pengajuans = Pengajuan::all();
+            return view('pengajuan.bpp.index', compact('user', 'pengajuans'));
+        }
+        if ($request->user()->hasRole('dinas')) {
+            $pengajuans = Pengajuan::all();
+            return view('pengajuan.dinas.index', compact('user', 'pengajuans'));
+        }
+}
+
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+
+        return view('pengajuan.poktan.create-pengajuan', compact('user'));
     }
 
     protected function generateKodePengajuan($prefix = 'PBPK', $length = 10)
@@ -43,13 +63,13 @@ class PengajuanController extends Controller
 
         if ($request->file('dokumen_pengajuan')) {
             $dokumenPengajuanFile = $request->file('dokumen_pengajuan');
-            // $dokumenPengajuanNameAsli = $dokumenPengajuanFile->getClientOriginalName();
             $dokumenPengajuanName = time() . '.' . $dokumenPengajuanFile->getClientOriginalExtension();
             $validatedData['dokumen_pengajuan'] = $dokumenPengajuanName;
             $dokumenPengajuanFile->storeAs('public/dokumen_pengajuans', $dokumenPengajuanName);
         }
 
-        $validatedData['kode_pengajuan'] = $this->generateKodepengajuan();
+        $validatedData['jenis_alsintan'] = $request->jenis_alsintan;
+        $validatedData['kode'] = $this->generateKodepengajuan();
         $validatedData['user_id'] = auth()->user()->id;
 
         Pengajuan::create($validatedData);
@@ -70,7 +90,9 @@ class PengajuanController extends Controller
      */
     public function edit(Pengajuan $pengajuan)
     {
-        //
+        $user = auth()->user();
+
+        return view('pengajuan.poktan.update-pengajuan', compact('pengajuan', 'user'));
     }
 
     /**
@@ -78,7 +100,28 @@ class PengajuanController extends Controller
      */
     public function update(Request $request, Pengajuan $pengajuan)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_alsintan' => 'required|min:3',
+            'alasan_pengajuan' => 'required|min:5',
+            'dokumen_pengajuan' => 'nullable|mimes:pdf|max:10240',
+        ]);
+
+        if ($request->hasFile('dokumen_pengajuan')) {
+            Storage::delete('public/dokumen_pengajuans/' . $pengajuan->dokumen_pengajuan);
+
+            $dokumenPengajuanFile = $request->file('dokumen_pengajuan');
+            $dokumenPengajuanName = time() . '.' . $dokumenPengajuanFile->getClientOriginalExtension();
+            $validatedData['dokumen_pengajuan'] = $dokumenPengajuanName;
+            $dokumenPengajuanFile->storeAs('public/dokumen_pengajuans', $dokumenPengajuanName);
+        } else {
+            $validatedData['dokumen_pengajuan'] = $pengajuan->dokumen_pengajuan;
+        }
+
+        $validatedData['jenis_alsintan'] = $request->jenis_alsintan;
+
+        $pengajuan->update($validatedData);
+
+        return redirect()->route('pengajuan.index')->with('success', 'Pengajuan Bantuan berhasil diperbarui!');
     }
 
     /**
@@ -86,6 +129,9 @@ class PengajuanController extends Controller
      */
     public function destroy(Pengajuan $pengajuan)
     {
-        //
+        $filePath = 'public/dokumen_pengajuans/' . $pengajuan->dokumen_pengajuan;
+        Storage::delete($filePath);
+        $pengajuan->delete();
+        return redirect()->route('pengajuan.index')->with('success', 'Pengajuan Bantuan berhasil dihapus!');
     }
 }

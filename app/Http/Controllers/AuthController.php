@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login() {
+    public function login()
+    {
         return view('auth.login');
     }
 
-    public function authenticate(Request $request) {
+    public function authenticate(Request $request)
+    {
         $validated = $request->validate([
             'username' => 'required',
             'password' => 'required',
@@ -19,19 +21,14 @@ class AuthController extends Controller
 
         if (Auth::attempt($validated)) {
             $user = auth()->user();
-            $profile = $user->profile;
-            // $pengajuans = PengajuanBantuan::where('user_id', $user->id)
-            // ->with(['status_tk1', 'status_tk2', 'jenis_alsintan'])
-            // ->get();
-
-
-            return redirect()->route('pengajuan.index');
+            return redirect()->route('dashboard');
         } else {
             return redirect('login')->with('error', 'Username atau Password salah !');
         }
     }
 
-    public function register() {
+    public function register()
+    {
         return view('auth.register');
     }
 
@@ -54,7 +51,8 @@ class AuthController extends Controller
         return redirect('/dashboard')->with('success', 'Registrasi berhasil!');
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         Auth::logout();
 
         $request->session()->invalidate();
