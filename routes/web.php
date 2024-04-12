@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'],function() {
         Route::delete('/pengajuan/{pengajuan}', [PengajuanController::class, 'destroy'])->name('pengajuan.destroy');
 
         Route::get('/perjanijan', [PerjanjianController::class, 'index'])->name('perjanjian.index');
-        Route::post('/perjanjian/{pengajuan}', [PerjanjianController::class, 'unggahPoktan'])->name('perjanjian.unggahSuratPoktan');
+        Route::put('/perjanjian/{id}', [PerjanjianController::class, 'unggahPoktan'])->name('perjanjian.unggahSuratPoktan');
     });
 
     Route::group(['middleware' => ['role:poktan|bpp|dinas']], function () {

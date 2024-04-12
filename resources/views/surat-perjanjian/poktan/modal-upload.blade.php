@@ -21,15 +21,18 @@
                   </button>
               </div>
               <!-- Modal body -->
-              <form class="p-4 md:p-5">
+              <form method="post" action="{{ route('perjanjian.unggahSuratPoktan', $pengajuan->id) }}" class="p-4 md:p-5" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="pengajuan_id" value="{{ $pengajuan->id }}">
                   <div class="grid gap-4 mb-4 grid-cols-2">
                     <div class="col-span-2">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="dokumen_pengajuan">Surat SPKO Poktan</label>
+                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="surat_poktan">Surat SPKO Poktan</label>
                         <input
                             class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            aria-describedby="dokumen_pengajuan_help" id="dokumen_pengajuan" name="dokumen_pengajuan" type="file" required>
-                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="dokumen_pengajuan_help">*Upload surat SPKO Poktan</p>
-                        @error('dokumen_pengajuan')
+                            aria-describedby="surat_poktan_help" id="surat_poktan" name="surat_poktan" type="file" required>
+                        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="surat_poktan_help">*Upload surat SPKO Poktan</p>
+                        @error('surat_poktan')
                             <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                         @enderror
                     </div>
