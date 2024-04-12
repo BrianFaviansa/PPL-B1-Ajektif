@@ -15,7 +15,8 @@ class Pengajuan extends Model
         'jenis_alsintan',
         'alasan_pengajuan',
         'dokumen_pengajuan',
-        'status',
+        'status_tk1',
+        'status_tk2',
         'tanggapan_bpp',
         'tanggapan_dinas',
         'penanggung_jawab_id',
@@ -31,6 +32,12 @@ class Pengajuan extends Model
         'disetujui_at',
         'surat_poktan_uploaded_at',
         'surat_dinas_uploaded_at',
+    ];
+
+    protected $casts = [
+        'disetujui_at' => 'datetime',
+        'surat_poktan_uploaded_at' => 'datetime',
+        'surat_dinas_uploaded_at' => 'datetime',
     ];
 
     public function getVerifikasiAtAttribute($value)

@@ -29,7 +29,7 @@ class PengajuanController extends Controller
             return view('pengajuan.bpp.index', compact('user', 'pengajuans'));
         }
         if ($request->user()->hasRole('dinas')) {
-            $pengajuans = Pengajuan::with('user')->get();;
+            $pengajuans = Pengajuan::where('status_tk1', 'Disetujui BPP')->with('user')->get();;
             return view('pengajuan.dinas.index', compact('user', 'pengajuans'));
         }
     }
@@ -82,12 +82,21 @@ class PengajuanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pengajuan $pengajuan)
+    public function show(Pengajuan $pengajuan, Request $request)
     {
         $user = auth()->user();
         $pengajuans = Pengajuan::with('user')->get();;
 
-        return view('pengajuan.bpp.show', compact('user', 'pengajuan'));
+        if($request->user()->hasRole('poktan')) {
+            return view('pengajuan.poktan.show', compact('user', 'pengajuan'));
+        }
+        if($request->user()->hasRole('bpp')) {
+            return view('pengajuan.bpp.show', compact('user', 'pengajuan'));
+        }
+        if($request->user()->hasRole('dinas')) {
+            return view('pengajuan.dinas.show', compact('user', 'pengajuan'));
+        }
+
     }
 
     /**
@@ -129,9 +138,9 @@ class PengajuanController extends Controller
         return redirect()->route('pengajuan.index')->with('success', 'Pengajuan Bantuan berhasil diperbarui!');
     }
 
-    public function updateStatus(Request $request, Pengajuan $pengajuan)
+    public function updateStatusBpp(Request $request, Pengajuan $pengajuan)
     {
-        $validatedData['status'] = $request->status;
+        $validatedData['status_tk1'] = $request->status_tk1;
         $validatedData['penanggung_jawab_id'] = $request->user()->id;
         $validatedData['tanggapan_bpp'] = $request->tanggapan_bpp;
 
@@ -139,6 +148,22 @@ class PengajuanController extends Controller
 
         return redirect()->route('pengajuan.index')->with('success', 'Status pengajuan berhasil diperbarui!');
     }
+
+    public function updateStatusDinas(Request $request, Pengajuan $pengajuan)
+    {
+        $validatedData['status_tk2'] = $request->status_tk2;
+        $validatedData['tanggapan_dinas'] = $request->tanggapan_dinas;
+
+        if($validatedData['status_tk2'] == 'Disetujui Dinas') {
+            $pengajuan->disetujui_at = now();
+        }
+
+        $pengajuan->update($validatedData);
+
+        return redirect()->route('pengajuan.index')->with('success', 'Status pengajuan berhasil diperbarui!');
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

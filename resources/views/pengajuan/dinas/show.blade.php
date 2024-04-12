@@ -90,43 +90,37 @@
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Status Tingkat 1</p>
         </div>
         <div>
-            <form action="{{ route('pengajuan.update-statusBpp', $pengajuan) }}" method="POST">
-                @csrf
-                <select id="status_tk1" name="status_tk1"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Belum disetujui BPP"
-                        {{ $pengajuan->status_tk1 === 'Belum disetujui BPP' ? 'selected' : '' }}>Belum disetujui BPP</option>
-                    <option value="Disetujui BPP" {{ $pengajuan->status_tk1 === 'Disetujui BPP' ? 'selected' : '' }}>Disetujui
-                        BPP</option>
-                </select>
+            <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->status_tk1 }}</p>
         </div>
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Tanggapan BPP</p>
         </div>
         <div>
-            <input type="text" id="tanggapan_bpp" name="tanggapan_bpp"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Tuliskan tanggapan" required />
+            <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->tanggapan_bpp }}</p>
         </div>
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Status Tingkat 2</p>
         </div>
         <div>
-            @if ($pengajuan->status == 'Disetujui Dinas')
-                <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->status }}</p>
-            @else
-                <p class="text-xl text-gray-900 dark:text-white">-</p>
-            @endif
+            <form action="{{ route('pengajuan.update-statusDinas', $pengajuan) }}" method="POST">
+                @csrf
+                <select id="status_tk2" name="status_tk2"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="Belum disetujui Dinas"
+                        {{ $pengajuan->status_tk2 === 'Belum disetujui Dinas' ? 'selected' : '' }}>
+                        Belum disetujui Dinas</option>
+                    <option value="Disetujui Dinas" {{ $pengajuan->status_tk2 === 'Disetujui Dinas' ? 'selected' : '' }}>
+                        Disetujui
+                        Dinas</option>
+                </select>
         </div>
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Tanggapan Dinas</p>
         </div>
         <div>
-            @if ($pengajuan->tanggapan_dinas)
-                <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->tanggapan_dinas }}</p>
-            @else
-                -
-            @endif
+            <input type="text" id="tanggapan_dinas" name="tanggapan_dinas"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Tuliskan tanggapan" required />
         </div>
         <div>
             <a href="{{ route('pengajuan.index') }}" type="button"

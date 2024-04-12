@@ -15,80 +15,80 @@ class RolePermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        // $poktan = Role::create(['name' => 'poktan']);
-        // $bpp = Role::create(['name' => 'bpp']);
-        // $dinas = Role::create(['name' => 'dinas']);
+        $poktan = Role::create(['name' => 'poktan']);
+        $bpp = Role::create(['name' => 'bpp']);
+        $dinas = Role::create(['name' => 'dinas']);
 
-        // $permissions = [
-        //     'view-pengajuan',
-        //     'create-pengajuan',
-        //     'edit-pengajuan',
-        //     'edit-status-pengajuan',
-        //     'hapus-pengajuan',
-        //     'create-akun',
-        //     'view-akun',
-        //     'update-akun',
-        //     'view-bantuan',
-        //     'edit-bantuan',
-        //     'hapus-bantuan'
-        // ];
+        $permissions = [
+            'view-pengajuan',
+            'create-pengajuan',
+            'edit-pengajuan',
+            'edit-status-pengajuan',
+            'hapus-pengajuan',
+            'create-akun',
+            'view-akun',
+            'update-akun',
+            'view-bantuan',
+            'edit-bantuan',
+            'hapus-bantuan'
+        ];
 
-        // foreach($permissions as $permission) {
-        //     Permission::create(['name' => $permission ]);
-        // }
+        foreach($permissions as $permission) {
+            Permission::create(['name' => $permission ]);
+        }
 
-        // $permissionPoktan = [
-        //     'view-pengajuan',
-        //     'create-pengajuan',
-        //     'edit-pengajuan',
-        //     'view-akun',
-        //     'update-akun',
-        //     'view-bantuan',
-        // ];
+        $permissionPoktan = [
+            'view-pengajuan',
+            'create-pengajuan',
+            'edit-pengajuan',
+            'view-akun',
+            'update-akun',
+            'view-bantuan',
+        ];
 
-        // foreach($permissionPoktan as $permPoktan) {
-        //     $poktan->givePermissionTo($permPoktan);
-        // }
+        foreach($permissionPoktan as $permPoktan) {
+            $poktan->givePermissionTo($permPoktan);
+        }
 
-        // $permissionBpp = [
-        //     'view-pengajuan',
-        //     'edit-status-pengajuan',
-        //     'view-akun',
-        //     'update-akun',
-        //     'view-bantuan',
-        //     'edit-bantuan',
-        //     'hapus-bantuan'
-        // ];
+        $permissionBpp = [
+            'view-pengajuan',
+            'edit-status-pengajuan',
+            'view-akun',
+            'update-akun',
+            'view-bantuan',
+            'edit-bantuan',
+            'hapus-bantuan'
+        ];
 
-        // foreach($permissionBpp as $permBpp) {
-        //     $bpp->givePermissionTo($permBpp);
-        // }
+        foreach($permissionBpp as $permBpp) {
+            $bpp->givePermissionTo($permBpp);
+        }
 
-        // $permissionDinas = [
-        //     'view-pengajuan',
-        //     'edit-status-pengajuan',
-        //     'view-akun',
-        //     'create-akun',
-        //     'update-akun',
-        // ];
+        $permissionDinas = [
+            'view-pengajuan',
+            'edit-status-pengajuan',
+            'view-akun',
+            'create-akun',
+            'update-akun',
+        ];
 
-        // foreach($permissionDinas as $permDinas) {
-        //     $dinas->givePermissionTo($permDinas);
-        // }
+        foreach($permissionDinas as $permDinas) {
+            $dinas->givePermissionTo($permDinas);
+        }
 
-        // $petani1 = User::find(1);
-        // $petani1->assignRole('poktan');
+        $petani1 = User::find(1);
+        $petani1->assignRole('poktan');
 
-        // $petani2 = User::find(2);
-        // $petani2->assignRole('poktan');
+        $petani2 = User::find(2);
+        $petani2->assignRole('poktan');
 
-        // $penyuluh = User::find(3);
-        // $penyuluh->assignRole('bpp');
-
-        $penyuluh = User::find(5);
+        $penyuluh = User::find(3);
         $penyuluh->assignRole('bpp');
 
-        // $dinas_pertanian = User::find(4);
-        // $dinas_pertanian->assignRole('dinas');
+        $penyuluh = User::find(4);
+        $penyuluh->assignRole('bpp');
+
+        $dinas_pertanian = User::find(5);
+        $dinas_pertanian->assignRole('dinas');
     }
 }

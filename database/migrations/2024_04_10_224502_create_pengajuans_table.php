@@ -21,11 +21,15 @@ return new class extends Migration
             $table->enum('jenis_alsintan', ['Alat Berat', 'Alat Ringan']);
             $table->text('alasan_pengajuan');
             $table->string('dokumen_pengajuan');
-            $table->enum('status', ['Belum disetujui', 'Disetujui BPP', 'Disetujui Dinas'])->default('Belum disetujui');
+            $table->enum('status_tk1', ['Belum diproses', 'Belum disetujui BPP', 'Disetujui BPP'])->default('Belum diproses');
+            $table->enum('status_tk2', ['Belum diproses', 'Belum disetujui Dinas', 'Disetujui Dinas'])->default('Belum diproses');
             $table->string('tanggapan_bpp')->nullable();
             $table->string('tanggapan_dinas')->nullable();
             $table->string('surat_poktan')->nullable();
             $table->string('surat_dinas')->nullable();
+            $table->timestamp('disetujui_at')->nullable();
+            $table->timestamp('surat_poktan_uploaded_at')->nullable();
+            $table->timestamp('surat_dinas_uploaded_at')->nullable();
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 @extends('layouts.app-dashboard')
 
 @section('content')
-    <div class="-mt-4 grid grid-cols-2 max-w-5xl gap-x-10 gap-y-6 ml-10">
+    <div class="grid grid-cols-2 max-w-5xl gap-x-10 gap-y-6 ml-10">
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Kode Pengajuan</p>
         </div>
@@ -67,7 +67,7 @@
         </div>
         <div class="flex items-center">
             <a href="{{ asset('storage/dokumen_pengajuans/' . $pengajuan->dokumen_pengajuan) }}" target="_blank"
-                class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                 <svg class="w-[18px] h-[18px] text-white dark:text-white" aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                     viewBox="0 0 24 24">
@@ -90,33 +90,19 @@
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Status Tingkat 1</p>
         </div>
         <div>
-            <form action="{{ route('pengajuan.update-statusBpp', $pengajuan) }}" method="POST">
-                @csrf
-                <select id="status_tk1" name="status_tk1"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option value="Belum disetujui BPP"
-                        {{ $pengajuan->status_tk1 === 'Belum disetujui BPP' ? 'selected' : '' }}>Belum disetujui BPP</option>
-                    <option value="Disetujui BPP" {{ $pengajuan->status_tk1 === 'Disetujui BPP' ? 'selected' : '' }}>Disetujui
-                        BPP</option>
-                </select>
+            <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->status_tk1 }}</p>
         </div>
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Tanggapan BPP</p>
         </div>
         <div>
-            <input type="text" id="tanggapan_bpp" name="tanggapan_bpp"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Tuliskan tanggapan" required />
+            <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->tanggapan_bpp }}</p>
         </div>
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Status Tingkat 2</p>
         </div>
         <div>
-            @if ($pengajuan->status == 'Disetujui Dinas')
-                <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->status }}</p>
-            @else
-                <p class="text-xl text-gray-900 dark:text-white">-</p>
-            @endif
+            <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->status_tk2 }}</p>
         </div>
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Tanggapan Dinas</p>
@@ -129,11 +115,8 @@
             @endif
         </div>
         <div>
-            <a href="{{ route('pengajuan.index') }}" type="button"
-                class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Kembali</a>
-            <button type="submit"
-                class="max-w-xs focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Ubah
-                Status</button>
+            <a href="{{ route('pengajuan.index') }}"
+                class="max-w-xs focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Kembali</a>
         </div>
         </form>
     </div>
