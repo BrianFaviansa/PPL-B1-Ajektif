@@ -17,8 +17,8 @@ class PerjanjianController extends Controller
 
         if ($request->user()->hasRole('poktan')) {
             $pengajuans = Pengajuan::where('user_id', $user->id)
-            ->orderByDesc('created_at')
-            ->get();
+                ->orderByDesc('created_at')
+                ->get();
             return view('surat-perjanjian.poktan.index', compact('user', 'pengajuans'));
         }
     }
@@ -44,7 +44,10 @@ class PerjanjianController extends Controller
      */
     public function show(Pengajuan $pengajuan)
     {
-        //
+        $user = auth()->user();
+
+        return view('surat-perjanjian.poktan.show', compact('user', 'pengajuan'));
+
     }
 
     /**
@@ -60,19 +63,13 @@ class PerjanjianController extends Controller
      */
     public function update(Request $request, Pengajuan $pengajuan)
     {
-
     }
 
     public function unggahPoktan(Request $request, Pengajuan $pengajuan)
     {
-        dd($request->pengajuan_id);
-
         $validatedData = $request->validate([
-            'pengajuan_id' => 'required|integer',
-            'surat_poktan' => 'nullable|file|mimes:pdf,doc,docx',
+            'surat_poktan' => 'mimes:pdf,doc,docx',
         ]);
-
-        $pengajuan = Pengajuan::findOrFail($validatedData['pengajuan_id']);
 
         // Kode untuk menangani upload surat_poktan
         if ($request->hasFile('surat_poktan')) {
@@ -99,6 +96,7 @@ class PerjanjianController extends Controller
 
         return redirect()->route('perjanjian.index')->with('success', 'Surat SPKO Poktan berhasil diunggah!');
     }
+
 
     /**
      * Remove the specified resource from storage.
