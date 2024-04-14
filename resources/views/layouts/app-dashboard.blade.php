@@ -113,7 +113,7 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Pengajuan Bantuan</span>
                     </a>
                 </li>
-                @hasanyrole('poktan|dinas')
+                @hasanyrole('poktan')
                     <li>
                         <a href="{{ route('perjanjian.index') }}"
                             class="{{ Route::is('perjanjian.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">

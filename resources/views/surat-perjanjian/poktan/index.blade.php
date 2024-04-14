@@ -14,11 +14,5 @@
             @include('surat-perjanjian.poktan.table')
         </div>
     @endif
-    <script>
-        // Get the pengajuan id from the data attribute of the button that triggers the modal
-        const pengajuanId = button.dataset.pengajuanId;
 
-        // Set the value of the pengajuan_id input field to the pengajuan id
-        document.getElementById("pengajuan_id").value = pengajuanId;
-    </script>
 @endsection
