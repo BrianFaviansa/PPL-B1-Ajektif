@@ -14,4 +14,10 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('user', 'desa', 'bantuan'));
     }
+
+    public function landing() {
+        $bantuan = InfoBantuan::latest()->firstOrFail();
+        
+        return view('landing', compact('bantuan'));
+    }
 }

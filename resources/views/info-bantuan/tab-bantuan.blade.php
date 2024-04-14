@@ -28,7 +28,7 @@ class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800
             Penerima Bantuan</h2>
         <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify">{!! $bantuan->syarat !!}</p>
     </div>
-    <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="statistics" role="tabpanel"
+    {{-- <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="statistics" role="tabpanel"
         aria-labelledby="statistics-tab">
         <dl
             class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
@@ -45,6 +45,6 @@ class="w-full bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800
                 <dd class="text-gray-500 dark:text-gray-400">Open source projects</dd>
             </div>
         </dl>
-    </div>
+    </div> --}}
 </div>
 </div>

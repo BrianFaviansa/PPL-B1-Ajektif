@@ -30,7 +30,7 @@ Route::post('/login', [AuthController::class, 'authenticate'])->middleware('gues
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::group(['middleware' => 'auth'],function() {
+Route::group(['middleware' => 'auth'], function () {
 
     Route::group(['middleware' => 'role:poktan'], function () {
         Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('pengajuan.create');
@@ -44,10 +44,6 @@ Route::group(['middleware' => 'auth'],function() {
         Route::put('/perjanjian/{pengajuan}', [PerjanjianController::class, 'unggahPoktan'])->name('perjanjian.unggahSuratPoktan');
     });
 
-    Route::group(['middleware' => ['role:poktan|bpp|dinas']], function () {
-        Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
-        Route::get('/pengajuan/{pengajuan}', [PengajuanController::class, 'show'])->name('pengajuan.show');
-    });
 
     Route::group(['middleware' => ['role:bpp|dinas']], function () {
         Route::post('/pengajuan/{pengajuan}/update-status-bpp', [PengajuanController::class, 'updateStatusBpp'])->name('pengajuan.update-statusBpp');
@@ -55,7 +51,6 @@ Route::group(['middleware' => 'auth'],function() {
     });
 
     Route::group(['middleware' => ['role:dinas']], function () {
-        Route::get('/akun', [UserController::class, 'index'])->name('akun.index');
         Route::get('/akun/create', [UserController::class, 'create'])->name('akun.create');
         Route::get('/akun/create-poktan', [UserController::class, 'createPoktan'])->name('akun.createPoktan');
         Route::get('/akun/create-bpp', [UserController::class, 'createBpp'])->name('akun.createBpp');
@@ -70,4 +65,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
+    Route::group(['middleware' => ['role:poktan|bpp|dinas']], function () {
+        Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
+        Route::get('/pengajuan/{pengajuan}', [PengajuanController::class, 'show'])->name('pengajuan.show');
+        Route::get('/akun', [UserController::class, 'index'])->name('akun.index');
+        Route::put('/akun/{user}', [UserController::class, 'update'])->name('akun.update');
+    });
 });
