@@ -59,5 +59,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
-    Route::resource('profile', UserController::class);
+    Route::get('/akun', [UserController::class, 'index'])->name('akun.index');
+    Route::get('/akun/create', [UserController::class, 'create'])->name('akun.create');
+    Route::get('/akun/create-poktan', [UserController::class, 'createPoktan'])->name('akun.createPoktan');
+    Route::get('/akun/create-bpp', [UserController::class, 'createBpp'])->name('akun.createBpp');
+    Route::post('/akun/store-poktan', [UserController::class, 'storePoktan'])->name('akun.storePoktan');
+    Route::post('/akun/store-bpp', [UserController::class, 'storeBpp'])->name('akun.storeBpp');
+    Route::get('/akun/{user}', [UserController::class, 'show'])->name('akun.show');
+    Route::get('/akun/{user}/edit', [UserController::class, 'edit'])->name('akun.edit');
+    Route::put('/akun/{user}', [UserController::class, 'update'])->name('akun.update');
+    Route::delete('/akun/{user}', [UserController::class, 'destroy'])->name('akun.destroy');
 });

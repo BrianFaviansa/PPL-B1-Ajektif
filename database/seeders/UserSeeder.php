@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
         User::create([
             'username' => 'dinas_jember',
             'password' => bcrypt('password'),
-            'desa_id' => 11,
+            'daerah' => 'Kabupaten Jember',
             'no_reg' => 'DN09768974',
             'nama' => 'Dinas Pertanian',
             'alamat' => 'Jl. Panglima Sudirman No. 10, Kaliwates, Jember',
