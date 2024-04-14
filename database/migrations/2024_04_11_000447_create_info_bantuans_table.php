@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('info_bantuans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->default(5);
             $table->string('nama');
-            $table->string('ringkasan');
+            $table->text('ringkasan');
             $table->text('syarat');
             $table->timestamps();
         });

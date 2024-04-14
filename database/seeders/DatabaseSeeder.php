@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             DesaSeeder::class,
             UserSeeder::class,
             RolePermissionSeeder::class,
+            InfoBantuanSeeder::class,
         ]);
     }
 }

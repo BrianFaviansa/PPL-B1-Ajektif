@@ -12,7 +12,10 @@ class InfoBantuanController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $bantuans = InfoBantuan::all();
+
+        return view('info-bantuan.index', compact('user', 'bantuans'));
     }
 
     /**
@@ -20,7 +23,9 @@ class InfoBantuanController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+        return view('info-bantuan.create', compact('user'));
+
     }
 
     /**
