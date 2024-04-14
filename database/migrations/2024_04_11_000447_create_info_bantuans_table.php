@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->text('ringkasan');
             $table->text('syarat');
+            $table->string('penanggung_jawab')->default('Dinas Pertanian');
             $table->timestamps();
         });
     }

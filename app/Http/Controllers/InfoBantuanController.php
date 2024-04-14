@@ -33,7 +33,20 @@ class InfoBantuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'ringkasan' => 'required',
+            'syarat' => 'required',
+            'penanggung_jawab' => 'required'
+        ]);
+
+        if($request->file('image')) {
+            $validatedData["image"] = $request->file('image')->store('post-images');
+        }
+
+        InfoBantuan::create($validatedData);
+
+        return redirect()->route('info-bantuan.index')->with('success', 'Informasi Bantuan baru berhasil dibuat!');
     }
 
     /**
