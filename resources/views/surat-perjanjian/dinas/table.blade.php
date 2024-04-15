@@ -103,7 +103,7 @@
                 </tr>
             @empty
                 <tr>
-                    <td class="text-center text-slate-700 text-base">Tidak ada data pengajuan.</td>
+                    <td class="text-center text-slate-700 text-base">Tidak ada data surat perjanjian.</td>
                 </tr>
             @endforelse
         </tbody>

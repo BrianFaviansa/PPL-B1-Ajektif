@@ -121,7 +121,9 @@ class PengajuanController extends Controller
         ]);
 
         if ($request->hasFile('dokumen_pengajuan')) {
-            Storage::delete('public/dokumen_pengajuans/' . $pengajuan->dokumen_pengajuan);
+            if ($pengajuan->dokumen_pengajuan) {
+                Storage::delete('public/dokumen_pengajuans/' . $pengajuan->dokumen_pengajuan);
+            }
 
             $dokumenPengajuanFile = $request->file('dokumen_pengajuan');
             $dokumenPengajuanName = time() . '.' . $dokumenPengajuanFile->getClientOriginalExtension();
@@ -132,7 +134,6 @@ class PengajuanController extends Controller
         }
 
         $validatedData['jenis_alsintan'] = $request->jenis_alsintan;
-
         $pengajuan->update($validatedData);
 
         return redirect()->route('pengajuan.index')->with('success', 'Pengajuan Bantuan berhasil diperbarui!');
