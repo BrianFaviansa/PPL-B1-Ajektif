@@ -14,7 +14,7 @@
                     Nama Poktan
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Dokumen
+                    Proposal
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Surat SPKO Poktan

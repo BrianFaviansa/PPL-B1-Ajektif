@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -21,6 +22,12 @@ class PerjanjianController extends Controller
                 ->get();
             return view('surat-perjanjian.poktan.index', compact('user', 'pengajuans'));
         }
+        if ($request->user()->hasRole('dinas')) {
+            $pengajuans = Pengajuan::all();
+            return view('surat-perjanjian.dinas.index', compact('user', 'pengajuans'));
+        }
+
+
     }
 
     /**
@@ -42,11 +49,17 @@ class PerjanjianController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Pengajuan $pengajuan)
+    public function show(Pengajuan $pengajuan, Request $request)
     {
         $user = auth()->user();
 
-        return view('surat-perjanjian.poktan.show', compact('user', 'pengajuan'));
+
+        if ($request->user()->hasRole('poktan')) {
+            return view('surat-perjanjian.poktan.show', compact('user', 'pengajuan'));
+        }
+        if ($request->user()->hasRole('dinas')) {
+            return view('surat-perjanjian.dinas.show', compact('user', 'pengajuan'));
+        }
 
     }
 
@@ -95,6 +108,38 @@ class PerjanjianController extends Controller
         $pengajuan->update($validatedData);
 
         return redirect()->route('perjanjian.index')->with('success', 'Surat SPKO Poktan berhasil diunggah!');
+    }
+
+    public function unggahDinas(Request $request, Pengajuan $pengajuan)
+    {
+        $validatedData = $request->validate([
+            'surat_dinas' => 'mimes:pdf,doc,docx',
+        ]);
+
+        // Kode untuk menangani upload surat_dinas
+        if ($request->hasFile('surat_dinas')) {
+            // Hapus file surat_dinas lama jika ada
+            if ($pengajuan->surat_dinas) {
+                Storage::delete('public/surat_dinass/' . $pengajuan->surat_dinas);
+            }
+
+            // Simpan file surat_dinas baru
+            $surat_dinasFile = $request->file('surat_dinas');
+            $surat_dinasName = time() . '.' . $surat_dinasFile->getClientOriginalExtension();
+            $validatedData['surat_dinas'] = $surat_dinasName;
+            $surat_dinasFile->storeAs('public/surat_dinass', $surat_dinasName);
+
+            // Simpan tanggal upload surat_dinas
+            $pengajuan->surat_dinas_uploaded_at = now();
+        } else {
+            // Jika tidak ada file surat_dinas baru, simpan nilai surat_dinas lama
+            $validatedData['surat_dinas'] = $pengajuan->surat_dinas;
+        }
+
+        // Update model Pengajuan
+        $pengajuan->update($validatedData);
+
+        return redirect()->route('perjanjian.index')->with('success', 'Surat SPKO Tingkat 2 berhasil diunggah!');
     }
 
 

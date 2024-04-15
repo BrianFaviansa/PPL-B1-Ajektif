@@ -15,7 +15,7 @@
                     Jenis Alsintan
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Dokumen
+                    Proposal
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Status Tingkat 1

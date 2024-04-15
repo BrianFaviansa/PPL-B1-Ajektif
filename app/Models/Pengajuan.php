@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasTimestamps;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pengajuan extends Model
 {
-    use HasFactory;
+    use HasFactory, HasTimestamps;
 
     protected $fillable = [
         'kode',
@@ -27,6 +28,11 @@ class Pengajuan extends Model
         'surat_poktan_uploaded_at',
         'surat_dinas_uploaded_at',
     ];
+    protected $casts = [
+        'disetujui_at' => 'datetime',
+        'surat_poktan_uploaded_at' => 'datetime',
+        'surat_dinas_uploaded_at' => 'datetime',
+    ];
 
     protected $dates = [
         'disetujui_at',
@@ -34,11 +40,6 @@ class Pengajuan extends Model
         'surat_dinas_uploaded_at',
     ];
 
-    protected $casts = [
-        'disetujui_at' => 'datetime',
-        'surat_poktan_uploaded_at' => 'datetime',
-        'surat_dinas_uploaded_at' => 'datetime',
-    ];
 
     public function getVerifikasiAtAttribute($value)
     {

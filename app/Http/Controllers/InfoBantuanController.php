@@ -13,7 +13,7 @@ class InfoBantuanController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $bantuans = InfoBantuan::all();
+        $bantuans = InfoBantuan::latest()->get();
 
         return view('info-bantuan.index', compact('user', 'bantuans'));
     }
@@ -40,10 +40,6 @@ class InfoBantuanController extends Controller
             'penanggung_jawab' => 'required'
         ]);
 
-        if($request->file('image')) {
-            $validatedData["image"] = $request->file('image')->store('post-images');
-        }
-
         InfoBantuan::create($validatedData);
 
         return redirect()->route('info-bantuan.index')->with('success', 'Informasi Bantuan baru berhasil dibuat!');
@@ -62,7 +58,9 @@ class InfoBantuanController extends Controller
      */
     public function edit(InfoBantuan $infoBantuan)
     {
-        //
+        $user = auth()->user();
+
+        return view('info-bantuan.edit', compact('user', 'infoBantuan'));
     }
 
     /**
@@ -70,7 +68,17 @@ class InfoBantuanController extends Controller
      */
     public function update(Request $request, InfoBantuan $infoBantuan)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'ringkasan' => 'required',
+            'syarat' => 'required',
+            'penanggung_jawab' => 'required'
+        ]);
+
+
+        $infoBantuan->update($validatedData);
+
+        return redirect()->route('info-bantuan.index')->with('success', 'Informasi Bantuan berhasil diperbarui!');
     }
 
     /**

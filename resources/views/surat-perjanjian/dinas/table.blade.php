@@ -21,7 +21,7 @@
                     Tanggal Disetujui
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Unggah SPKO
+                    Unggah Surat SPKO Tingkat 2
                 </th>
             </tr>
         </thead>
@@ -99,7 +99,6 @@
                             </svg>
 
                             </svg>Detail
-                        </a>
                     </td>
                 </tr>
             @empty

@@ -26,10 +26,10 @@
                         {{ $bantuan->nama }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $bantuan->created_at }}
+                        {{ $bantuan->created_at->format('d F Y') }}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{{ route('info-bantuan.edit', $bantuan) }}"
+                        <a href="{{ route('info-bantuan.edit', $bantuan->id) }}"
                             class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                             <svg class="w-[18px] h-[18px] text-white-800 dark:text-white mr-1" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
