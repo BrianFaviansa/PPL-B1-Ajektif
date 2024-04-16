@@ -21,7 +21,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($validated)) {
             $user = auth()->user();
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard', compact('user'));
         } else {
             return redirect('login')->with('error', 'Username atau Password salah !');
         }

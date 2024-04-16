@@ -18,35 +18,18 @@
     <div id="defaultTabContent">
         <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="about" role="tabpanel"
             aria-labelledby="about-tab">
-            <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">Informasi Pengadaan
+            <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">Informasi
+                Pengadaan
                 Bantuan</h2>
             <h2 class="mb-3 text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $bantuan->nama }}
-            </h2
-            <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify">{{ $bantuan->ringkasan }}</p>
+            </h2 <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify">{{ $bantuan->ringkasan }}</p>
         </div>
         <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="services" role="tabpanel"
             aria-labelledby="services-tab">
-            <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white">Syarat dan Ketentuan
+            <h2 class="mb-3 text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">Syarat dan
+                Ketentuan
                 Penerima Bantuan</h2>
             <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify">{!! $bantuan->syarat !!}</p>
         </div>
-        {{-- <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="statistics" role="tabpanel"
-        aria-labelledby="statistics-tab">
-        <dl
-            class="grid max-w-screen-xl grid-cols-2 gap-8 p-4 mx-auto text-gray-900 sm:grid-cols-3 xl:grid-cols-6 dark:text-white sm:p-8">
-            <div class="flex flex-col">
-                <dt class="mb-2 text-3xl font-extrabold">73M+</dt>
-                <dd class="text-gray-500 dark:text-gray-400">Developers</dd>
-            </div>
-            <div class="flex flex-col">
-                <dt class="mb-2 text-3xl font-extrabold">100M+</dt>
-                <dd class="text-gray-500 dark:text-gray-400">Public repositories</dd>
-            </div>
-            <div class="flex flex-col">
-                <dt class="mb-2 text-3xl font-extrabold">1000s</dt>
-                <dd class="text-gray-500 dark:text-gray-400">Open source projects</dd>
-            </div>
-        </dl>
-    </div> --}}
     </div>
 </div>
