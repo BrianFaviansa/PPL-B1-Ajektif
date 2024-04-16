@@ -4,9 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\InfoBantuanController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\DaftarAkunController;
 use App\Http\Controllers\PerjanjianController;
+use App\Http\Controllers\InfoBantuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,9 @@ Route::middleware('auth')->group(function () {
         Route::post('/akun/store-bpp', [UserController::class, 'storeBpp'])->name('akun.storeBpp');
         Route::put('/perjanjian/{pengajuan}/unggah-dinas', [PerjanjianController::class, 'unggahDinas'])->name('perjanjian.unggahSuratDinas');
         Route::resource('info-bantuan', InfoBantuanController::class);
+        Route::get('/daftar-akun', [DaftarAkunController::class, 'index'])->name('daftar-akun.index');
+        Route::get('/daftar-akun/poktan', [DaftarAkunController::class, 'showPoktan'])->name('daftar-akun.showPoktan');
+        Route::get('/daftar-akun/bpp', [DaftarAkunController::class, 'showBpp'])->name('daftar-akun.showBpp');
     });
 
     Route::middleware('role:poktan|bpp|dinas')->group(function () {

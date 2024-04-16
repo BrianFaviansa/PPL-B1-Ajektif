@@ -11,7 +11,7 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <div
                     class="bg-gray-100 dark:bg-gray-800 border-2 shadow-lg border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
-                    <a href="{{ route('akun.createPoktan') }}"
+                    <a href="{{ route('daftar-akun.showPoktan') }}"
                         class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2">
                         <svg class="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -22,16 +22,16 @@
                         </svg>
 
                     </a>
-                    <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-5">Tambah Akun Poktan
+                    <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-5">Daftar Akun Poktan
                     </h2>
 
-                    <a href="{{ route('akun.createPoktan') }}" type="button"
-                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buat</a>
+                    <a href="{{ route('daftar-akun.showPoktan') }}" type="button"
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-5 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Lihat</a>
                 </div>
                 <div
                     class="bg-gray-100 dark:bg-gray-800 border-2 shadow-lg border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12">
-                    <a href="{{ route('akun.createBpp') }}"
-                        class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2">
+                    <a href="{{ route('daftar-akun.showBpp') }}"
+                        class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-5">
                         <svg class="w-[48px] h-[48px] text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                             viewBox="0 0 24 24">
@@ -40,10 +40,10 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </a>
-                    <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-5">Tambah Akun BPP</h2>
+                    <h2 class="text-gray-900 dark:text-white text-3xl font-extrabold mb-5">Daftar Akun BPP</h2>
 
-                    <a href="{{ route('akun.createBpp') }}" type="button"
-                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Buat</a>
+                    <a href="{{ route('daftar-akun.showBpp') }}" type="button"
+                        class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Lihat</a>
                 </div>
             </div>
         </div>
