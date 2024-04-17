@@ -24,12 +24,10 @@ class PerjanjianController extends Controller
         }
         if ($request->user()->hasRole('dinas')) {
             $pengajuans = Pengajuan::where('status_tk2', 'Disetujui Dinas')
-               ->where('status_tk1', 'Disetujui BPP')
-               ->get();
+                ->where('status_tk1', 'Disetujui BPP')->orderByDesc('created_at')
+                ->get();
             return view('surat-perjanjian.dinas.index', compact('user', 'pengajuans'));
         }
-
-
     }
 
     /**
@@ -62,7 +60,6 @@ class PerjanjianController extends Controller
         if ($request->user()->hasRole('dinas')) {
             return view('surat-perjanjian.dinas.show', compact('user', 'pengajuan'));
         }
-
     }
 
     /**

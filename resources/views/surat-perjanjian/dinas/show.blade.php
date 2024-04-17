@@ -42,7 +42,7 @@
             @endif
         </div>
         <div>
-            <p class="text-xl font-semibold text-gray-900 dark:text-white">Desa</p>
+            <p class="text-xl font-semibold text-gray-900 dark:text-white">Tanggal Disetujui</p>
         </div>
         <div>
             @if ($pengajuan->disetujui_at)

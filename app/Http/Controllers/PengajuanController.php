@@ -24,12 +24,12 @@ class PengajuanController extends Controller
             return view('pengajuan.poktan.index', compact('user', 'pengajuans'));
         }
         if ($request->user()->hasRole('bpp')) {
-            $pengajuans = Pengajuan::with('user')->get();;
+            $pengajuans = Pengajuan::with('user')->orderByDesc('created_at')->get();;
             $penanggung_jawab_ids = $pengajuans->pluck('penanggung_jawab_id');
             return view('pengajuan.bpp.index', compact('user', 'pengajuans'));
         }
         if ($request->user()->hasRole('dinas')) {
-            $pengajuans = Pengajuan::where('status_tk1', 'Disetujui BPP')->with('user')->get();;
+            $pengajuans = Pengajuan::where('status_tk1', 'Disetujui BPP')->with('user')->orderByDesc('created_at')->get();;
             return view('pengajuan.dinas.index', compact('user', 'pengajuans'));
         }
     }

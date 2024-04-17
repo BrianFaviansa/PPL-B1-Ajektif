@@ -70,5 +70,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/pengajuan/{pengajuan}', [PengajuanController::class, 'show'])->name('pengajuan.show');
         Route::get('/akun', [UserController::class, 'index'])->name('akun.index');
         Route::put('/akun/{user}', [UserController::class, 'update'])->name('akun.update');
+        Route::get('/akun/{user}', [UserController::class, 'show'])->name('akun.show');
     });
 });

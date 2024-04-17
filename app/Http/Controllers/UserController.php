@@ -111,6 +111,13 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+        $pelihat = auth()->user();
+        if($pelihat->hasRole('bpp')) {
+            return view('profil.poktan.show', compact('user', 'pelihat'));
+        }
+        if($pelihat->hasRole('poktan')) {
+            return view('profil.bpp.show', compact('user', 'pelihat'));
+        }
     }
 
     /**

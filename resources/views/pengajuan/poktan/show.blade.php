@@ -112,6 +112,12 @@
             <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->tanggapan_bpp }}</p>
         </div>
         <div>
+            <p class="text-xl font-semibold text-gray-900 dark:text-white">Penanggung Jawab</p>
+        </div>
+        <div>
+            <p class="text-xl text-gray-900 dark:text-white"><a class="underline text-green-700" href="{{ route('akun.show', $pengajuan->penanggung_jawab) }}">{{ $pengajuan->penanggung_jawab->nama }}</a></p>
+        </div>
+        <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Status Tingkat 2</p>
         </div>
         <div>
