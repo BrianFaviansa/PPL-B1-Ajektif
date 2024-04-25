@@ -11,7 +11,7 @@
 <body>
     @include('layouts.landing.nav')
     <div class="container mx-auto mt-[69px]">
-        @yield('content')
+        @yield('content') 
     </div>
 
     @include('layouts.landing.footer')

@@ -11,7 +11,7 @@
 </head>
 
 <body class="flex flex-col justify-center -mt-10 items-center h-screen">
-    <img class="rounded-full bg-gray-400 w-36 h-36" src="/docs/images/people/profile-picture-5.jpg" alt="">
+    <img class="rounded-full w-36 h-36" src="{{ asset('assets/img/logo ajektif.svg') }}" alt="">
     <h2 class="text-4xl font-bold dark:text-white mt-4 mb-6">Agro Jember Konektif</h2>
     <div class="container shadow-2xl rounded-lg p-16 max-w-md">
         <form action="{{ route('login') }}" method="post" class="mx-auto">
