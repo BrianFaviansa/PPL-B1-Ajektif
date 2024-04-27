@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('penanggung_jawab_id')->references('id')->on('users');
             $table->string('nama');
             $table->string('video');
-            $table->string('ringkasan');
+            $table->text('ringkasan');
             $table->timestamps();
         });
     }
