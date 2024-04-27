@@ -8,6 +8,7 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\DaftarAkunController;
 use App\Http\Controllers\PerjanjianController;
 use App\Http\Controllers\InfoBantuanController;
+use App\Http\Controllers\PelatihanOnlineController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,5 +72,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/akun', [UserController::class, 'index'])->name('akun.index');
         Route::put('/akun/{user}', [UserController::class, 'update'])->name('akun.update');
         Route::get('/akun/{user}', [UserController::class, 'show'])->name('akun.show');
+    });
+
+    Route::middleware('role:bpp')->group(function () {
+        Route::get('/bpp/pelatihan', [PelatihanOnlineController::class, 'index'])->name('bpp.pelatihan.index');
     });
 });

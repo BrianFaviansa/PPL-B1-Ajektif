@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('pelatihan_onlines', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->unsignedBigInteger('penanggung_jawab_id')->nullable();
+            $table->foreign('penanggung_jawab_id')->references('id')->on('users');
             $table->string('nama');
             $table->string('video');
             $table->string('ringkasan');
-            $table->string('penanggung_jawab');
             $table->timestamps();
         });
     }

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('kelas_offlines', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->unsignedBigInteger('penanggung_jawab_id')->nullable();
+            $table->foreign('penanggung_jawab_id')->references('id')->on('users');
             $table->string('nama');
             $table->string('poster');
             $table->date('tgl_pelaksanaan');
             $table->string('jam_pelaksanaan');
             $table->string('lokasi_pelaksanaan');
-            $table->string('penanggung_jawab');
             $table->timestamps();
         });
     }
