@@ -138,9 +138,9 @@
                 @endhasanyrole
                 @role('bpp')
                     <li>
-                        <a href="{{ route('pelatihan.index') }}"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        <a href="{{ route('bpp.pelatihan.index') }}"
+                            class="{{ Route::is('bpp.pelatihan.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="{{ Route::is('bpp.pelatihan.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"

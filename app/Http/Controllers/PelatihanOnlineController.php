@@ -12,7 +12,10 @@ class PelatihanOnlineController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $pelatihanOnlines = PelatihanOnline::all();
+
+        return view('pelatihan.bpp.index', compact('pelatihanOnlines','user'));
     }
 
     /**
@@ -20,7 +23,9 @@ class PelatihanOnlineController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+
+        return view('pelatihan.bpp.create', compact('user'));
     }
 
     /**

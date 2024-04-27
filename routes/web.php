@@ -76,5 +76,10 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:bpp')->group(function () {
         Route::get('/bpp/pelatihan', [PelatihanOnlineController::class, 'index'])->name('bpp.pelatihan.index');
+        Route::get('/bpp/pelatihan/create', [PelatihanOnlineController::class, 'create'])->name('bpp.pelatihan.create');
+        Route::get('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'show'])->name('bpp.pelatihan.show');
+        Route::post('/bpp/pelatihan', [PelatihanOnlineController::class, 'store'])->name('bpp.pelatihan.store');
+        Route::post('/bpp/pelatihan/{pelatihanOnline}/edit', [PelatihanOnlineController::class, 'edit'])->name('bpp.pelatihan.edit');
+        Route::put('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'update'])->name('bpp.pelatihan.update');
     });
 });

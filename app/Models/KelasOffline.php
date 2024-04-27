@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class KelasOffline extends Model
 {
     use HasFactory;
+
+    public function penanggung_jawab()
+    {
+        return $this->belongsTo(User::class, 'penanggung_jawab_id');
+    }
 }
