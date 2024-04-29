@@ -212,13 +212,13 @@
     </aside>
 
 
-    <div class="p-4 sm:ml-64">
-        <div class="p-4 rounded-lg dark:border-gray-700 mt-14 min-h-screen">
+    <div class="p-4 sm:ml-64 min-h-screen">
+        <div class="p-4 rounded-lg dark:border-gray-700 mt-14">
             @yield('content')
         </div>
     </div>
     </div>
-    <div class="mt-auto">
+    <div class="md:bottom-0 md:absolute w-full">
         @include('layouts.landing.footer')
     </div>
 </body>

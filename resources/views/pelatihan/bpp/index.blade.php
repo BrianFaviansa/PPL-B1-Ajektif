@@ -16,11 +16,4 @@
         @include('pelatihan.bpp.table')
     </div>
 
-    <div class="mt-6">
-        @forelse ($pelatihanOnlines as $pelatihanOnline)
-            {!! OEmbed::get($pelatihanOnline->video)->html() !!}
-        @empty
-            tidak ada video
-        @endforelse
-    </div>
 @endsection

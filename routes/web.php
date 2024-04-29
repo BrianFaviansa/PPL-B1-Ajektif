@@ -84,3 +84,5 @@ Route::middleware('auth')->group(function () {
         Route::delete('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'destroy'])->name('bpp.pelatihan.destroy');
     });
 });
+
+Route::get('/pelatihan-online', [PelatihanOnlineController::class, 'indexLanding'])->name('landing.pelatihan.index');

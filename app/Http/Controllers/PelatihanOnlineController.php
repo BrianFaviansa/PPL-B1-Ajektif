@@ -18,6 +18,12 @@ class PelatihanOnlineController extends Controller
         return view('pelatihan.bpp.index', compact('pelatihanOnlines','user'));
     }
 
+    public function indexLanding() {
+        $pelatihanOnlines = PelatihanOnline::all();
+
+        return view('pelatihan.landing.index', compact('pelatihanOnlines'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
