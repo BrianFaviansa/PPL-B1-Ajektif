@@ -33,7 +33,25 @@ class PelatihanOnlineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'video' => 'mimetype:video',
+            'ringkasan' => 'required',
+        ]);
+
+        if($request->file('video')) {
+            $validatedData['video'] = $request->file('video')->store('pelatihan');
+            $videoPelatihan = $request->file('video');
+            $videoPelatihanName = time() . '.' . $videoPelatihan->getClientOriginalExtension();
+            $validatedData['video'] = $videoPelatihanName;
+            $videoPelatihan->storeAs('public/video_pelatihans', $videoPelatihanName);
+        }
+
+        $validatedData['penanggung_jawab_id'] = $request->user()->id;
+        PelatihanOnline::create($validatedData);
+
+        return redirect()->route('bpp.pelatihan.index')->with('success', 'Pelatihan online berhasil ditambahkan!');
     }
 
     /**
