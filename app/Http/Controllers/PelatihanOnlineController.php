@@ -42,7 +42,7 @@ class PelatihanOnlineController extends Controller
         $validatedData['penanggung_jawab_id'] = $request->user()->id;
         PelatihanOnline::create($validatedData);
 
-        return redirect()->route('bpp.pelatihan.index')->with('success', 'Pelatihan online berhasil ditambahkan!');
+        return redirect()->route('bpp.pelatihan.index')->with('success', 'Pelatihan Online berhasil ditambahkan!');
     }
 
     /**
@@ -58,7 +58,9 @@ class PelatihanOnlineController extends Controller
      */
     public function edit(PelatihanOnline $pelatihanOnline)
     {
-        //
+        $user = auth()->user();
+
+        return view('pelatihan.bpp.edit', compact('pelatihanOnline', 'user'));
     }
 
     /**
@@ -66,7 +68,16 @@ class PelatihanOnlineController extends Controller
      */
     public function update(Request $request, PelatihanOnline $pelatihanOnline)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'video' => 'required',
+            'ringkasan' => 'required',
+        ]);
+
+        $validatedData['penanggung_jawab_id'] = $request->user()->id;
+        $pelatihanOnline->update($validatedData);
+
+        return redirect()->route('bpp.pelatihan.index')->with('success', 'Pelatihan Online berhasil diperbarui!');
     }
 
     /**
@@ -74,6 +85,8 @@ class PelatihanOnlineController extends Controller
      */
     public function destroy(PelatihanOnline $pelatihanOnline)
     {
-        //
+        $pelatihanOnline->delete();
+
+        return redirect()->route('bpp.pelatihan.index')->with('success', 'Pelatihan Online berhasil dihapus!');
     }
 }

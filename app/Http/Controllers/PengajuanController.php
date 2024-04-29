@@ -147,7 +147,7 @@ class PengajuanController extends Controller
 
         $pengajuan->update($validatedData);
 
-        return redirect()->route('pengajuan.index')->with('success', 'Status pengajuan berhasil diperbarui!');
+        return redirect()->route('pengajuan.index')->with('success', 'Status Pengajuan berhasil diperbarui!');
     }
 
     public function updateStatusDinas(Request $request, Pengajuan $pengajuan)
@@ -161,7 +161,7 @@ class PengajuanController extends Controller
 
         $pengajuan->update($validatedData);
 
-        return redirect()->route('pengajuan.index')->with('success', 'Status pengajuan berhasil diperbarui!');
+        return redirect()->route('pengajuan.index')->with('success', 'Status Pengajuan berhasil diperbarui!');
     }
 
 

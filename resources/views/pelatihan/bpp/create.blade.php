@@ -30,7 +30,7 @@
             <label for="ringkasan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ringkasan
                 Pelatihan</label>
             <input id="x" type="hidden" name="ringkasan">
-            <trix-editor value="{{ old('ringkasan') }}" input="x"></trix-editor>
+            <trix-editor input="x"></trix-editor>
             @error('ringkasan')
                 <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
             @enderror

@@ -79,7 +79,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/bpp/pelatihan/create', [PelatihanOnlineController::class, 'create'])->name('bpp.pelatihan.create');
         Route::get('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'show'])->name('bpp.pelatihan.show');
         Route::post('/bpp/pelatihan', [PelatihanOnlineController::class, 'store'])->name('bpp.pelatihan.store');
-        Route::post('/bpp/pelatihan/{pelatihanOnline}/edit', [PelatihanOnlineController::class, 'edit'])->name('bpp.pelatihan.edit');
+        Route::get('/bpp/pelatihan/{pelatihanOnline}/edit', [PelatihanOnlineController::class, 'edit'])->name('bpp.pelatihan.edit');
         Route::put('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'update'])->name('bpp.pelatihan.update');
+        Route::delete('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'destroy'])->name('bpp.pelatihan.destroy');
     });
 });
