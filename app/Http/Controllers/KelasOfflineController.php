@@ -12,7 +12,10 @@ class KelasOfflineController extends Controller
      */
     public function index()
     {
-        //
+        $kelasOfflines = KelasOffline::all();
+        $user = auth()->user();
+
+        return view('kelas.bpp.index', compact('kelasOfflines', 'user'));
     }
 
     /**
@@ -20,7 +23,9 @@ class KelasOfflineController extends Controller
      */
     public function create()
     {
-        //
+        $user = auth()->user();
+
+        return view('kelas.bpp.create', compact('user'));
     }
 
     /**
@@ -28,7 +33,7 @@ class KelasOfflineController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd("halo adek");
     }
 
     /**

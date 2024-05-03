@@ -41,9 +41,16 @@ class PelatihanOnlineController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required',
-            'video' => 'required',
+            'video' => 'required|mimetypes:video/mp4,video/mpeg,video/quicktime',
             'ringkasan' => 'required',
         ]);
+
+        if ($request->file('video')) {
+            $videoPelatihanFile = $request->file('video');
+            $videoPelatihanName = time() . '.' . $videoPelatihanFile->getClientOriginalExtension();
+            $validatedData['video'] = $videoPelatihanName;
+            $videoPelatihanFile->storeAs('public/video_pelatihans', $videoPelatihanName);
+        }
 
         $validatedData['penanggung_jawab_id'] = $request->user()->id;
         PelatihanOnline::create($validatedData);

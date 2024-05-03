@@ -6,13 +6,19 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nama Pelatihan Online
+                    Nama Kelas
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Video Pelatihan
+                    Poster Kelas
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Tanggal Upload Pelatihan
+                    Tanggal Pelaksanaan
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Tanggal Upload Kelas
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Lokasi Pelaksanaan
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Penanggung Jawab
@@ -23,26 +29,26 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($pelatihanOnlines as $pelatihanOnline)
+            @forelse ($kelasOfflines as $kelasOffline)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <td scope="row" class="px-6 py-4">
                         {{ $loop->iteration }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $pelatihanOnline->nama }}
+                        {{ $kelasOffline->nama }}
                     </td>
                     <td class="px-6 py-4">
                         <a class="underline hover:cursor-pointer" target="_blank"
-                            href="{{ $pelatihanOnline->video }}">{{ $pelatihanOnline->video }}</a>
+                            href="{{ $kelasOffline->video }}">{{ $kelasOffline->video }}</a>
                     </td>
                     <td class="px-6 py-4">
-                        {{ $pelatihanOnline->created_at->format('d F Y') }}
+                        {{ $kelasOffline->created_at->format('d F Y') }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $pelatihanOnline->penanggung_jawab->nama }}
+                        {{ $kelasOffline->penanggung_jawab->nama }}
                     </td>
                     <td class="px-6 py-4">
-                        <a href="{{ route('bpp.pelatihan.edit', $pelatihanOnline) }}"
+                        <a href="{{ route('bpp.pelatihan.edit', $kelasOffline) }}"
                             class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                             <svg class="w-[18px] h-[18px] text-white dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -56,7 +62,7 @@
                             </svg>
                             </svg>Edit
                         </a>
-                        <form action="{{ route('bpp.pelatihan.destroy', $pelatihanOnline) }}" method="POST">
+                        <form action="{{ route('bpp.pelatihan.destroy', $kelasOffline) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"

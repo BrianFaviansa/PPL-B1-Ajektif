@@ -151,9 +151,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#"
-                            class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        <a href="{{ route('bpp.kelas.index') }}"
+                            class="{{ Route::is('bpp.kelas.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <svg class="{{ Route::is('bpp.kelas.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
@@ -218,9 +218,10 @@
         </div>
     </div>
     </div>
-    <div class="md:bottom-0 md:absolute w-full">
+    <div class="md:bottom-0 md:relative w-full">
         @include('layouts.landing.footer')
     </div>
+
 </body>
 
 </html>

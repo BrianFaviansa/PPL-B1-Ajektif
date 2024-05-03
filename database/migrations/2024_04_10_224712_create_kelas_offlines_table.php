@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('penanggung_jawab_id')->nullable();
             $table->foreign('penanggung_jawab_id')->references('id')->on('users');
             $table->string('nama');
+            $table->text('ringkasan');
             $table->string('poster');
             $table->date('tgl_pelaksanaan');
             $table->string('jam_pelaksanaan');

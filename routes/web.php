@@ -8,6 +8,7 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\DaftarAkunController;
 use App\Http\Controllers\PerjanjianController;
 use App\Http\Controllers\InfoBantuanController;
+use App\Http\Controllers\KelasOfflineController;
 use App\Http\Controllers\PelatihanOnlineController;
 
 /*
@@ -82,7 +83,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/bpp/pelatihan/{pelatihanOnline}/edit', [PelatihanOnlineController::class, 'edit'])->name('bpp.pelatihan.edit');
         Route::put('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'update'])->name('bpp.pelatihan.update');
         Route::delete('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'destroy'])->name('bpp.pelatihan.destroy');
+
+        Route::get('/bpp/kelas', [KelasOfflineController::class, 'index'])->name('bpp.kelas.index');
+        Route::get('/bpp/kelas/create', [KelasOfflineController::class, 'create'])->name('bpp.kelas.create');
+        Route::get('/bpp/kelas/{kelasOffline}', [KelasOfflineController::class, 'show'])->name('bpp.kelas.show');
+        Route::post('/bpp/kelas', [KelasOfflineController::class, 'store'])->name('bpp.kelas.store');
+        Route::get('/bpp/kelas/{kelasOffline}/edit', [KelasOfflineController::class, 'edit'])->name('bpp.kelas.edit');
+        Route::put('/bpp/kelas/{kelasOffline}', [KelasOfflineController::class, 'update'])->name('bpp.kelas.update');
+        Route::delete('/bpp/kelas/{kelasOffline}', [KelasOfflineController::class, 'destroy'])->name('bpp.kelas.destroy');
     });
+
+
 });
 
 Route::get('/pelatihan-online', [PelatihanOnlineController::class, 'indexLanding'])->name('landing.pelatihan.index');

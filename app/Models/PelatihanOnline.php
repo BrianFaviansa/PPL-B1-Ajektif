@@ -22,14 +22,4 @@ class PelatihanOnline extends Model
         return $this->belongsTo(User::class, 'penanggung_jawab_id');
     }
 
-    public function getVideoUrlAttribute($value)
-    {
-        $embed = OEmbed::get($value);
-        if ($embed) {
-            // Mengembalikan hanya link video saja
-            return $embed->providerUrl;
-        }
-
-        return $value;
-    }
 }
