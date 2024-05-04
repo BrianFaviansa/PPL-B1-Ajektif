@@ -33,7 +33,28 @@ class KelasOfflineController extends Controller
      */
     public function store(Request $request)
     {
-        dd("halo adek");
+        dd($request->all());
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'ringkasan' => 'required',
+            'poster' => 'required|image|mimes:jpeg,png,jpg',
+            'tgl_pelaksanaan' => 'required|date',
+            'jam_pelaksanaan' => 'required',
+            'lokasi_pelaksanaan' => 'required',
+        ]);
+
+        if ($request->file('poster')) {
+            $posterPelatihanFile = $request->file('poster');
+            $posterPelatihanName = time() . '.' . $posterPelatihanFile->getClientOriginalExtension();
+            $validatedData['poster'] = $posterPelatihanName;
+            $posterPelatihanFile->storeAs('public/poster_kelass', $posterPelatihanName);
+        }
+
+        $validatedData['penanggung_jawab_id'] = $request->user()->id;
+
+        KelasOffline::create($validatedData);
+
+        return redirect()->route('bpp.kelas.index')->with('success', 'Kelas berhasil ditambahkan!');
     }
 
     /**

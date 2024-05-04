@@ -17,10 +17,12 @@
         <div class="my-4">
             <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="poster">Poster
                 Pelatihan</label>
+            <img class="h-auto max-w-md img-preview" style="max-width: 300px;">
             <input
                 class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                aria-describedby="poster_help" id="poster" name="poster" type="file" required>
-            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="poster_help">*Upload Poster Pelatihan</p>
+                aria-describedby="poster_help" id="poster" name="poster" type="file" onchange="previewPoster()"
+                required>
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="poster_help">*Upload Poster Kelas</p>
             @error('poster')
                 <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
             @enderror
@@ -39,7 +41,7 @@
                 Pelaksanaan</label>
             <input type="text" id="jam_pelaksanaan" name="jam_pelaksanaan"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required autofocus placeholder="ex : 09.00" />
+                required placeholder="ex : 09.00" />
             @error('jam_pelaksanaan')
                 <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
             @enderror
@@ -60,12 +62,20 @@
                 name="tgl_pelaksanaan" id="tgl_pelaksanaan"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Select date">
-            @error('jam_pelaksanaan')
+            @error('tgl_pelaksanaan')
                 <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
             @enderror
         </div>
-
-
+        <div class="my-4">
+            <label for="lokasi_pelaksanaan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Lokasi
+                Pelaksanaan</label>
+            <input type="text" id="lokasi_pelaksanaan" name="lokasi_pelaksanaan"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required placeholder="Tuliskan lokasi pelaksanaan kelas" />
+            @error('lokasi_pelaksanaan')
+                <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
+            @enderror
+        </div>
         <div class="my-4">
             <label for="" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penanggung
                 Jawab</label>
@@ -75,10 +85,27 @@
         </div>
         <a href="{{ route('bpp.pelatihan.index') }}"
             class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Kembali</a>
-        <button type="submit" id="submit-btn"
+        <button type="submit"
             class="focus:outline-none text-white bg-green-700 hover:cursor-pointer hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Simpan
             Perubahan</button>
     </form>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+
+    <script>
+
+        function previewPoster() {
+            const image = document.querySelector('#poster');
+            const imgPreview = document.querySelector('.img-preview')
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 @endsection
