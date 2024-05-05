@@ -38,11 +38,30 @@
                         {{ $kelasOffline->nama }}
                     </td>
                     <td class="px-6 py-4">
-                        <a class="underline hover:cursor-pointer" target="_blank"
-                            href="{{ $kelasOffline->video }}">{{ $kelasOffline->video }}</a>
+                        @if ($kelasOffline->poster)
+                            <a href="{{ asset('storage/poster_kelass/' . $kelasOffline->poster) }}" target="_blank"
+                                class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+                                <svg class="w-[18px] h-[18px] text-white dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M9 2.221V7H4.221a2 2 0 0 1 .365-.5L8.5 2.586A2 2 0 0 1 9 2.22ZM11 2v5a2 2 0 0 1-2 2H4v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-7Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+
+                            </a>
+                        @else
+                            -
+                        @endif
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $kelasOffline->tgl_pelaksanaan->format('d F Y') }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $kelasOffline->created_at->format('d F Y') }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ $kelasOffline->lokasi_pelaksanaan }}
                     </td>
                     <td class="px-6 py-4">
                         {{ $kelasOffline->penanggung_jawab->nama }}

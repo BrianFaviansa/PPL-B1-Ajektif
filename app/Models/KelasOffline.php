@@ -13,6 +13,14 @@ class KelasOffline extends Model
         'id',
     ];
 
+    protected $casts = [
+        'tgl_pelaksanaan' => 'date',
+    ];
+
+    protected $dates = [
+        'tgl_pelaksanaan',
+    ];
+
     public function penanggung_jawab()
     {
         return $this->belongsTo(User::class, 'penanggung_jawab_id');

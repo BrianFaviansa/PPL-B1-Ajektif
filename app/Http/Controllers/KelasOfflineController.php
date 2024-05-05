@@ -34,8 +34,6 @@ class KelasOfflineController extends Controller
      */
     public function store(Request $request)
     {
-        $tanggalPelaksanaan = Carbon::createFromFormat('d/m/Y', $request->tgl_pelaksanaan);
-        $request->merge(['tgl_pelaksanaan' => $tanggalPelaksanaan]);
         $validatedData = $request->validate([
             'nama' => 'required',
             'ringkasan' => 'required',
