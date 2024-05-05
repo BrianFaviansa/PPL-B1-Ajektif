@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KelasOffline;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class KelasOfflineController extends Controller
 {
@@ -33,7 +34,8 @@ class KelasOfflineController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $tanggalPelaksanaan = Carbon::createFromFormat('d/m/Y', $request->tgl_pelaksanaan);
+        $request->merge(['tgl_pelaksanaan' => $tanggalPelaksanaan]);
         $validatedData = $request->validate([
             'nama' => 'required',
             'ringkasan' => 'required',

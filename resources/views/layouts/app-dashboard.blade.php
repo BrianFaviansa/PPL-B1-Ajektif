@@ -33,8 +33,8 @@
                             </path>
                         </svg>
                     </button>
-                    <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                        <img src="{{ asset('assets/img/logo ajektif.svg') }}" class="h-8" alt="">
+                    <a href="{{ route('dashboard') }}" class="flex items-center space-x-3 rtl:space-x-reverse">
+                        <img src="{{ asset('assets/img/logo ajektif.svg') }}" class="h-8 md:h-10" alt="">
                         <span
                             class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{ config('app.name') }}</span>
                     </a>
@@ -94,10 +94,10 @@
         class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
         aria-label="Sidebar">
         <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
-            <ul class="space-y-2 font-medium">
-                <li>
+            <ul class="space-y-2 text-lg font-medium">
+                <li class="transition hover:scale-105">
                     <a href="{{ route('dashboard') }}"
-                        class="{{ Route::is('dashboard') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="{{ Route::is('dashboard') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                         <svg class="{{ Route::is('dashboard') ? 'text-white' : '' }} w-[24px] h-[24px] text-gray-800 dark:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="currentColor" viewBox="0 0 24 24">
@@ -108,9 +108,9 @@
                         <span class="flex-1 ms-3 whitespace-nowrap">Dashboard</span>
                     </a>
                 </li>
-                <li>
+                <li class="transition hover:scale-105">
                     <a href="{{ route('pengajuan.index') }}"
-                        class="{{ Route::is('pengajuan.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }}  flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        class="{{ Route::is('pengajuan.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }}  flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                         <svg class="{{ Route::is('pengajuan.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white"
                             aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                             fill="currentColor" viewBox="0 0 24 24">
@@ -122,9 +122,9 @@
                     </a>
                 </li>
                 @hasanyrole('poktan|dinas')
-                    <li>
+                    <li class="transition hover:scale-105">
                         <a href="{{ route('perjanjian.index') }}"
-                            class="{{ Route::is('perjanjian.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            class="{{ Route::is('perjanjian.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                             <svg class="{{ Route::is('perjanjian.*') ? 'text-white' : '' }} w-[24px] h-[24px] text-gray-800 dark:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
@@ -134,12 +134,12 @@
                             </svg>
                             <span class="flex-1 ms-3 whitespace-nowrap">Surat Perjanjian</span>
                         </a>
-                    </li>
+                    </li class="transition hover:scale-105">
                 @endhasanyrole
                 @role('bpp')
-                    <li>
+                    <li class="transition hover:scale-105">
                         <a href="{{ route('bpp.pelatihan.index') }}"
-                            class="{{ Route::is('bpp.pelatihan.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            class="{{ Route::is('bpp.pelatihan.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                             <svg class="{{ Route::is('bpp.pelatihan.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
@@ -150,9 +150,9 @@
                             <span class="flex-1 ms-3 whitespace-nowrap">Pelatihan Online</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="transition hover:scale-105">
                         <a href="{{ route('bpp.kelas.index') }}"
-                            class="{{ Route::is('bpp.kelas.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            class="{{ Route::is('bpp.kelas.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                             <svg class="{{ Route::is('bpp.kelas.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                 viewBox="0 0 24 24">
@@ -165,9 +165,9 @@
                     </li>
                 @endrole
                 @role('dinas')
-                    <li>
+                    <li class="transition hover:scale-105">
                         <a href="{{ route('info-bantuan.index') }}"
-                            class="{{ Route::is('info-bantuan.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            class="{{ Route::is('info-bantuan.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                             <svg class="{{ Route::is('info-bantuan.*') ? 'text-white' : '' }} w-[24px] h-[24px] text-gray-800 dark:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
@@ -179,9 +179,9 @@
                             <span class="flex-1 ms-3 whitespace-nowrap">Informasi Bantuan</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="transition hover:scale-105">
                         <a href="{{ route('akun.create') }}"
-                            class="{{ Route::is('akun.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            class="{{ Route::is('akun.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                             <svg class="{{ Route::is('akun.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
@@ -192,9 +192,9 @@
                             <span class="flex-1 ms-3 whitespace-nowrap">Tambah Akun</span>
                         </a>
                     </li>
-                    <li>
+                    <li class="transition hover:scale-105">
                         <a href="{{ route('daftar-akun.index') }}"
-                            class="{{ Route::is('daftar-akun.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            class="{{ Route::is('daftar-akun.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
                             <svg class="{{ Route::is('daftar-akun.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
