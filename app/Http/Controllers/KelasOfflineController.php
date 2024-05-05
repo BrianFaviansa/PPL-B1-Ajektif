@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\KelasOffline;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class KelasOfflineController extends Controller
 {
@@ -70,7 +71,9 @@ class KelasOfflineController extends Controller
      */
     public function edit(KelasOffline $kelasOffline)
     {
-        //
+        $user = auth()->user();
+
+        return view('kelas.bpp.edit', compact('kelasOffline', 'user'));
     }
 
     /**
@@ -78,7 +81,32 @@ class KelasOfflineController extends Controller
      */
     public function update(Request $request, KelasOffline $kelasOffline)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'ringkasan' => 'required',
+            'poster' => 'nullable|image|mimes:jpeg,png,jpg',
+            'tgl_pelaksanaan' => 'required|date',
+            'jam_pelaksanaan' => 'required',
+            'lokasi_pelaksanaan' => 'required',
+        ]);
+
+        if ($request->file('poster')) {
+            if ($request->oldImage) {
+                Storage::delete('public/poster_kelass/' . $request->oldImage);
+            }
+            $posterPelatihanFile = $request->file('poster');
+            $posterPelatihanName = time() . '.' . $posterPelatihanFile->getClientOriginalExtension();
+            $validatedData['poster'] = $posterPelatihanName;
+            $posterPelatihanFile->storeAs('public/poster_kelass', $posterPelatihanName);
+        } else {
+            $validatedData['poster'] = $request->oldImage;
+        }
+
+        $validatedData['penanggung_jawab_id'] = $request->user()->id;
+
+        $kelasOffline->update($validatedData);
+
+        return redirect()->route('bpp.kelas.index')->with('success', 'Kelas berhasil diubah!');
     }
 
     /**

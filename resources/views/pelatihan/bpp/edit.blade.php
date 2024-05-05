@@ -17,12 +17,14 @@
             @enderror
         </div>
         <div>
-            <label for="video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Link Video
+            <label for="video" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Video
                 Pelatihan Online</label>
-            <input type="text" id="video" name="video" value="{{ $pelatihanOnline->video }}"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Tuliskan video pelatihan" required />
-            @error('nama')
+                <input type="hidden" name="oldVideo" value="{{ $pelatihanOnline->video }}">
+                <input
+                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                aria-describedby="video_help" id="video" name="video" type="file">
+            <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="video_help">*Upload video pelatihan max 100 mb. Kosongi jika tidak ingin mengubah file video</p>
+            @error('video')
                 <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
             @enderror
         </div>

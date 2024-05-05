@@ -32,8 +32,9 @@
                         {{ $pelatihanOnline->nama }}
                     </td>
                     <td class="px-6 py-4">
-                        <a class="underline hover:cursor-pointer" target="_blank"
-                            href="{{ $pelatihanOnline->video }}">{{ $pelatihanOnline->video }}</a>
+                        <a href="{{ asset('storage/video_pelatihans/' . $pelatihanOnline->video) }}" target="_blank" class="text-green-600 underline">
+                            {{ $pelatihanOnline->video }}
+                        </a>
                     </td>
                     <td class="px-6 py-4">
                         {{ $pelatihanOnline->created_at->format('d F Y') }}

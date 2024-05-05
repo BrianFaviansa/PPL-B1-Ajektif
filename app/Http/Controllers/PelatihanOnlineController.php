@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PelatihanOnline;
 use Illuminate\Http\Request;
+use App\Models\PelatihanOnline;
+use Illuminate\Support\Facades\Storage;
 
 class PelatihanOnlineController extends Controller
 {
@@ -83,9 +84,21 @@ class PelatihanOnlineController extends Controller
     {
         $validatedData = $request->validate([
             'nama' => 'required',
-            'video' => 'required',
+            'video' => 'nullable|mimetypes:video/mp4,video/mpeg,video/quicktime',
             'ringkasan' => 'required',
         ]);
+
+        if ($request->file('video')) {
+            if ($request->oldVideo) {
+                Storage::delete('public/video_pelatihans/' . $request->oldVideo);
+            }
+            $videoPelatihanFile = $request->file('poster');
+            $videoPelatihanName = time() . '.' . $videoPelatihanFile->getClientOriginalExtension();
+            $validatedData['poster'] = $videoPelatihanName;
+            $videoPelatihanFile->storeAs('public/video_pelatihans', $videoPelatihanName);
+        } else {
+            $validatedData['video'] = $request->oldVideo;
+        }
 
         $validatedData['penanggung_jawab_id'] = $request->user()->id;
         $pelatihanOnline->update($validatedData);
