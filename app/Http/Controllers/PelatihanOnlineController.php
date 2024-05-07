@@ -25,6 +25,9 @@ class PelatihanOnlineController extends Controller
         return view('pelatihan.landing.index', compact('pelatihanOnlines'));
     }
 
+    public function showPelatihanLanding(PelatihanOnline $pelatihanOnline) {
+        return view('pelatihan.landing.show', compact('pelatihanOnline'));
+    }
     /**
      * Show the form for creating a new resource.
      */

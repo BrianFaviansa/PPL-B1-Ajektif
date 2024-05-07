@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="text-4xl font-semibold dark:text-white mb-8">Tambah Video Pelatihan</h2>
 
-    <form action="{{ route('bpp.pelatihan.store') }}" method="POST" enctype="multipart/form-data" id="upload-form">
+    <form action="{{ route('bpp.pelatihan.store') }}" method="POST" enctype="multipart/form-data" id="">
         @csrf
         <div class="my-4">
             <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Pelatihan
@@ -27,13 +27,13 @@
             @enderror
         </div>
 
-        <div class="flex justify-center mb-1">
+        {{-- <div class="flex justify-center mb-1">
             <span class="text-sm font-medium text-blue-700 dark:text-white percent">0%</span>
         </div>
         <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
             <div class="bg-blue-600 text-xs font-medium text-blue-100 text-center p-0.5 h-2.5 leading-none rounded-full progress-bar"
                 style="width: 0%;"></div>
-        </div>
+        </div> --}}
 
         <div class="my-4">
             <label for="ringkasan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ringkasan
@@ -53,12 +53,12 @@
         </div>
         <a href="{{ route('bpp.pelatihan.index') }}"
             class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Kembali</a>
-        <button type="submit" id="submit-btn" disabled
+        <button type="submit" id="submit-btn"
             class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Simpan
             Perubahan</button>
     </form>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function() {
             const progressBar = $('.progress-bar');
@@ -88,5 +88,5 @@
                 }
             });
         });
-    </script>
+    </script> --}}
 @endsection

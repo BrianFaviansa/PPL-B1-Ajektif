@@ -97,3 +97,4 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/pelatihan-online', [PelatihanOnlineController::class, 'indexLanding'])->name('landing.pelatihan.index');
+Route::get('/pelatihan-online/{pelatihanOnline}', [PelatihanOnlineController::class, 'showPelatihanLanding'])->name('landing.pelatihan.show');

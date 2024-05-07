@@ -1,7 +1,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead class="text-sm text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
+            <tr class="text-center">
                 <th scope="col" class="px-6 py-3">
                     No
                 </th>
@@ -26,14 +26,14 @@
                 <th scope="col" class="px-6 py-3">
                     Tanggal Disetujui
                 </th>
-                <th scope="col" class="px-6 py-3">
+                <th scope="col" class="px-6 py-3 text-center">
                     Aksi
                 </th>
             </tr>
         </thead>
         <tbody>
             @forelse ($pengajuans as $pengajuan)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-sm">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-sm md:text-base hover:bg-gray-100">
                     <td scope="row" class="px-6 py-4">
                         {{ $loop->iteration }}
                     </td>
@@ -46,7 +46,7 @@
                     <td class="px-6 py-4">
                         {{ $pengajuan->jenis_alsintan }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-center">
                         @if ($pengajuan->dokumen_pengajuan)
                             <a href="{{ asset('storage/dokumen_pengajuans/' . $pengajuan->dokumen_pengajuan) }}"
                                 target="_blank"
@@ -77,7 +77,7 @@
                             -
                         @endif
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 flex justify-start gap-x-1 flex-wrap">
                         <a href="{{ route('pengajuan.show', $pengajuan) }}"
                             class="px-3 py-2 text-xs font-medium text-center inline-flex items-center text-white bg-green-700 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
                             <svg class="w-[18px] h-[18px] text-white dark:text-white mr-1" aria-hidden="true"
