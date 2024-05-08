@@ -11,6 +11,6 @@
         @include('layouts.landing.alasan')
     </div>
     <div class="">
-        @include('layouts.landing.card-kelas')
+        {{-- @include('layouts.landing.card-kelas') --}}
     </div>
 @endsection

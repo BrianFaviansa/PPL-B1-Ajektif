@@ -20,6 +20,17 @@ class KelasOfflineController extends Controller
         return view('kelas.bpp.index', compact('kelasOfflines', 'user'));
     }
 
+    public function indexLanding() {
+        $kelasOfflines = KelasOffline::all();
+
+        return view('kelas.landing.index', compact('kelasOfflines'));
+    }
+
+    public function showLanding(KelasOffline $kelasOffline) {
+
+        return view('kelas.landing.show', compact('kelasOffline'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -38,7 +49,7 @@ class KelasOfflineController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required',
             'ringkasan' => 'required',
-            'poster' => 'required|image|mimes:jpeg,png,jpg',
+            'poster' => 'required|image|mimes:jpeg,png,jpg|dimensions:max_width=1920,max_height=1080',
             'tgl_pelaksanaan' => 'required|date',
             'jam_pelaksanaan' => 'required',
             'lokasi_pelaksanaan' => 'required',

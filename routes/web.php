@@ -98,3 +98,6 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/pelatihan-online', [PelatihanOnlineController::class, 'indexLanding'])->name('landing.pelatihan.index');
 Route::get('/pelatihan-online/{pelatihanOnline}', [PelatihanOnlineController::class, 'showPelatihanLanding'])->name('landing.pelatihan.show');
+
+Route::get('/kelas-offline', [KelasOfflineController::class, 'indexLanding'])->name('landing.kelas.index');
+Route::get('/kelas-offline/{kelasOffline}', [KelasOfflineController::class, 'showKelasLanding'])->name('landing.kelas.show');
