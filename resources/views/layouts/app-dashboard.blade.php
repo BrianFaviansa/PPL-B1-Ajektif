@@ -54,10 +54,10 @@
                         <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                             id="dropdown-user">
                             <div class="px-4 py-3" role="none">
-                                <p class="text-sm text-gray-900 dark:text-white" role="none">
+                                <p class="text-base font-semibold text-gray-900 dark:text-white" role="none">
                                     {{ $user->nama }}
                                 </p>
-                                <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                                <p class="text-base font-normal text-gray-900 truncate dark:text-gray-300" role="none">
                                     @role('dinas')
                                         {{ $user->daerah }}
                                     @endrole
@@ -69,17 +69,17 @@
                             <ul class="py-1" role="none">
                                 <li>
                                     <a href="{{ route('akun.index', $user->id) }}"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        class="block px-4 py-2 text-base text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                         role="menuitem">Profil</a>
                                 </li>
                                 <li>
                                 <li>
                                     <a href="{{ route('landing') }}"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                        class="block px-4 py-2 text-base text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                         role="menuitem">Home</a>
                                 </li>
                                 <a href="{{ route('logout') }}"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    class="block px-4 py-2 text-base text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                     role="menuitem">Logout</a>
                                 </li>
                             </ul>

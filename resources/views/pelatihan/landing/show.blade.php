@@ -8,7 +8,7 @@
         <source src="{{ asset('storage/video_pelatihans/' . $pelatihanOnline->video) }}" type="video/mp4">
         Maaf browser anda tidak support tag video.
     </video>
-    <div class="container mx-auto w-full h-auto border border-black rounded-lg text-justify py-3 px-3 mt-8 mb-4">
+    <div class="container mx-auto w-full h-auto border border-black rounded-lg text-justify py-3 px-3 mt-8 mb-8">
         <h3 class="text-3xl font-bold text-gray-950">Ringkasan Pelatihan</h3>
         <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify text-base md:text-2xl">{!! $pelatihanOnline->ringkasan !!}</p>
     </div>
