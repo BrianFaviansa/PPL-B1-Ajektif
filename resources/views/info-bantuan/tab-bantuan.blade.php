@@ -21,15 +21,15 @@
             <h2 class="mb-3 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">Informasi
                 Pengadaan
                 Bantuan</h2>
-            <h2 class="mb-3 text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $bantuan->nama }}</h2>
-            <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify text-sm md:text-xl">{{ $bantuan->ringkasan }}</p>
+            <h2 class="mb-3 text-4xl font-semibold tracking-tight text-gray-900 dark:text-white">{{ $bantuan->nama }}</h2>
+            <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify text-lg md:text-2xl">{{ $bantuan->ringkasan }}</p>
         </div>
         <div class="hidden p-4 bg-white rounded-lg md:p-8 dark:bg-gray-800" id="services" role="tabpanel"
             aria-labelledby="services-tab">
             <h2 class="mb-5 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">Syarat dan
                 Ketentuan
                 Penerima Bantuan</h2>
-            <p class="mb-3 mt-3 text-gray-500 text-sm md:text-xl dark:text-gray-400 text-justify">{!! $bantuan->syarat !!}</p>
+            <p class="mb-3 mt-3 text-gray-500 text-lg md:text-2xl dark:text-gray-400 text-justify">{!! $bantuan->syarat !!}</p>
         </div>
     </div>
 </div>
