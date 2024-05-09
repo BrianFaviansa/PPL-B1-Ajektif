@@ -22,9 +22,7 @@ use App\Http\Controllers\PelatihanOnlineController;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-})->name('landing');
+Route::get('/', [DashboardController::class, 'landing'])->name('landing');
 
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'store']);

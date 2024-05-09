@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\InfoBantuan;
+use App\Models\KelasOffline;
 use Illuminate\Http\Request;
+use App\Models\PelatihanOnline;
 
 class DashboardController extends Controller
 {
@@ -17,7 +19,9 @@ class DashboardController extends Controller
 
     public function landing() {
         $bantuan = InfoBantuan::latest()->firstOrFail();
-        
-        return view('landing', compact('bantuan'));
+        $kelasOfflines = KelasOffline::limit(3)->get();
+        $pelatihanOnlines = PelatihanOnline::limit(3)->get();
+
+        return view('landing', compact('bantuan', 'kelasOfflines', 'pelatihanOnlines'));
     }
 }

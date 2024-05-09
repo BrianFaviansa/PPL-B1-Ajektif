@@ -6,7 +6,7 @@
                 </h2>
                 <p class="text-lg font-normal text-gray-500 dark:text-gray-400 mb-8">AJEKTIF adalah sebuah platform untuk
                     pengajuan bantuan alsintan dan kamu yang ingin belajar di dunia pertanian.</p>
-                <a
+                <a href="#kelas-belajar"
                     class="text-white bg-green-900 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-900 dark:focus:ring-green-800 hover:cursor-pointer">Jelajahi
                     Sekarang</a>
             </div>
