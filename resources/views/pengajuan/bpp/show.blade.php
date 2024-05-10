@@ -108,25 +108,28 @@
                 <select id="status_tk1" name="status_tk1"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="Belum disetujui BPP"
-                        {{ $pengajuan->status_tk1 === 'Belum disetujui BPP' ? 'selected' : '' }}>Belum disetujui BPP</option>
-                    <option value="Disetujui BPP" {{ $pengajuan->status_tk1 === 'Disetujui BPP' ? 'selected' : '' }}>Disetujui
+                        {{ $pengajuan->status_tk1 === 'Belum disetujui BPP' ? 'selected' : '' }}>Belum disetujui BPP
+                    </option>
+                    <option value="Disetujui BPP" {{ $pengajuan->status_tk1 === 'Disetujui BPP' ? 'selected' : '' }}>
+                        Disetujui
                         BPP</option>
                 </select>
         </div>
+
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Tanggapan BPP</p>
         </div>
         <div>
-            <input type="text" id="tanggapan_bpp" name="tanggapan_bpp"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Tuliskan tanggapan" required />
+            <textarea id="tanggapan_bpp" rows="4" name="tanggapan_bpp"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                value="{{ $pengajuan->tanggapan_bpp }}" placeholder="Tuliskan tanggapan"></textarea>
         </div>
         <div>
             <p class="text-xl font-semibold text-gray-900 dark:text-white">Status Tingkat 2</p>
         </div>
         <div>
-            @if ($pengajuan->status == 'Disetujui Dinas')
-                <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->status }}</p>
+            @if ($pengajuan->status_tk2 == 'Disetujui Dinas')
+                <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->status_tk2 }}</p>
             @else
                 <p class="text-xl text-gray-900 dark:text-white">-</p>
             @endif
@@ -137,6 +140,18 @@
         <div>
             @if ($pengajuan->tanggapan_dinas)
                 <p class="text-xl text-gray-900 dark:text-white">{{ $pengajuan->tanggapan_dinas }}</p>
+            @else
+                -
+            @endif
+        </div>
+        <div>
+            <p class="text-xl font-semibold text-gray-900 dark:text-white">Tanggal Disetujui</p>
+        </div>
+        <div>
+            @if ($pengajuan->disetujui_at)
+                <input type="text" id="disabled-input" aria-label="disabled input"
+                    class="bg-gray-100 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    value="{{ $pengajuan->disetujui_at->format('d F Y') }}" disabled>
             @else
                 -
             @endif
