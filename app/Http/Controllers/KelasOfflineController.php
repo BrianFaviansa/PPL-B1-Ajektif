@@ -26,7 +26,7 @@ class KelasOfflineController extends Controller
         return view('kelas.landing.index', compact('kelasOfflines'));
     }
 
-    public function showLanding(KelasOffline $kelasOffline) {
+    public function showKelasLanding(KelasOffline $kelasOffline) {
 
         return view('kelas.landing.show', compact('kelasOffline'));
     }
