@@ -35,7 +35,7 @@
         </thead>
         <tbody>
             @forelse ($pengajuans as $pengajuan)
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-sm md:text-base">
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-sm md:text-base hover:bg-gray-100">
                     <td scope="row" class="px-6 py-4">
                         {{ $loop->iteration }}
                     </td>
