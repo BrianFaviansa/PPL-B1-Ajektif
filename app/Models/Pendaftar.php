@@ -15,6 +15,7 @@ class Pendaftar extends Model
         'nama',
         'no_telpon',
         'motivasi',
+        'nama_kelas',
     ];
 
     public function kelas() {

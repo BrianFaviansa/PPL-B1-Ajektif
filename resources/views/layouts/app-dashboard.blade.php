@@ -47,8 +47,7 @@
                                 aria-expanded="false" data-dropdown-toggle="dropdown-user">
                                 <span class="sr-only">Open user menu</span>
                                 <img class="w-8 h-8 rounded-full"
-                                {{-- !! ganti profile jadi pp wa kosongan --}}
-                                    src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                    src="{{ asset('assets/img/blank_pp.png') }}"
                                     alt="user photo">
                             </button>
                         </div>

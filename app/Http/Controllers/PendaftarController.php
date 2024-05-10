@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pendaftar;
+use App\Models\KelasOffline;
 use Illuminate\Http\Request;
 
 class PendaftarController extends Controller
@@ -13,7 +14,20 @@ class PendaftarController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $pendaftars = Pendaftar::orderBy('kelas_offline_id')->latest()->with('kelas')->get();
+        $pendaftars = Pendaftar::orderBy('nama_kelas')->latest()->with('kelas')->get();
+
+        if (request()->has('search')) {
+            $pendaftars = Pendaftar::where('nama', 'like', '%' . request('search') . '%')
+                ->orWhere('nik', 'like', '%' . request('search') . '%')
+                ->orWhere('no_telpon', 'like', '%' . request('search') . '%')
+                ->orWhere('motivasi', 'like', '%' . request('search') . '%')
+                ->orWhere('nama_kelas', 'like', '%' . request('search') . '%')->orderBy('nama_kelas')
+                ->latest()
+                ->with('kelas')
+                ->get();
+        } else {
+            $pendaftars = Pendaftar::orderBy('nama_kelas')->latest()->with('kelas')->get();
+        }
 
         return view('pendaftar.index', compact('user', 'pendaftars'));
     }
@@ -38,10 +52,19 @@ class PendaftarController extends Controller
             'motivasi' => 'required',
         ]);
 
-        $validatedData['kelas_offline_id'] = $request->kelas_id;
-        Pendaftar::create($validatedData);
+        $kelas = KelasOffline::find($request->kelas_id);
 
-        return redirect()->route('landing.kelas.show', $request->kelas_id)->withSuccess('Terima Kasih Telah Mendaftar Kelas');}
+        if ($kelas) {
+            $validatedData['kelas_offline_id'] = $request->kelas_id;
+            $validatedData['nama_kelas'] = $kelas->nama;
+
+            Pendaftar::create($validatedData);
+
+            return redirect()->route('landing.kelas.show', $request->kelas_id)->withSuccess('Terima Kasih Telah Mendaftar Kelas');
+        } else {
+            return redirect()->back()->withError('Kelas tidak ditemukan.');
+        }
+    }
 
     /**
      * Display the specified resource.
