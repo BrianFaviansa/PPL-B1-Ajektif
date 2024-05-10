@@ -10,6 +10,7 @@ use App\Http\Controllers\PerjanjianController;
 use App\Http\Controllers\InfoBantuanController;
 use App\Http\Controllers\KelasOfflineController;
 use App\Http\Controllers\PelatihanOnlineController;
+use App\Http\Controllers\PendaftarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +100,5 @@ Route::get('/pelatihan-online/{pelatihanOnline}', [PelatihanOnlineController::cl
 
 Route::get('/kelas-offline', [KelasOfflineController::class, 'indexLanding'])->name('landing.kelas.index');
 Route::get('/kelas-offline/{kelasOffline}', [KelasOfflineController::class, 'showKelasLanding'])->name('landing.kelas.show');
+
+Route::post('/pendaftar',[PendaftarController::class, 'store' ])->name('pendaftar.store');

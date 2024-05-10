@@ -14,7 +14,7 @@ class PelatihanOnlineController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $pelatihanOnlines = PelatihanOnline::all();
+        $pelatihanOnlines = PelatihanOnline::latest()->get();
 
         return view('pelatihan.bpp.index', compact('pelatihanOnlines','user'));
     }

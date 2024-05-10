@@ -14,7 +14,7 @@ class KelasOfflineController extends Controller
      */
     public function index()
     {
-        $kelasOfflines = KelasOffline::all();
+        $kelasOfflines = KelasOffline::latest()->get();
         $user = auth()->user();
 
         return view('kelas.bpp.index', compact('kelasOfflines', 'user'));
