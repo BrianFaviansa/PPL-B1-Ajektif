@@ -12,7 +12,10 @@ class PendaftarController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+        $pendaftars = Pendaftar::orderBy('kelas_offline_id')->latest()->with('kelas')->get();
+
+        return view('pendaftar.index', compact('user', 'pendaftars'));
     }
 
     /**
@@ -28,8 +31,17 @@ class PendaftarController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validatedData = $request->validate([
+            'nik' => 'required|min:10',
+            'nama' => 'required',
+            'no_telpon' => 'required|numeric',
+            'motivasi' => 'required',
+        ]);
+
+        $validatedData['kelas_offline_id'] = $request->kelas_id;
+        Pendaftar::create($validatedData);
+
+        return redirect()->route('landing.kelas.show', $request->kelas_id)->withSuccess('Terima Kasih Telah Mendaftar Kelas');}
 
     /**
      * Display the specified resource.

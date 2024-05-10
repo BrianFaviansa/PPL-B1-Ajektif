@@ -57,7 +57,8 @@
                                 <p class="text-base font-semibold text-gray-900 dark:text-white" role="none">
                                     {{ $user->nama }}
                                 </p>
-                                <p class="text-base font-normal text-gray-900 truncate dark:text-gray-300" role="none">
+                                <p class="text-base font-normal text-gray-900 truncate dark:text-gray-300"
+                                    role="none">
                                     @role('dinas')
                                         {{ $user->daerah }}
                                     @endrole
@@ -140,9 +141,9 @@
                     <li class="transition hover:scale-105">
                         <a href="{{ route('bpp.pelatihan.index') }}"
                             class="{{ Route::is('bpp.pelatihan.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="{{ Route::is('bpp.pelatihan.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
+                            <svg class="{{ Route::is('bpp.pelatihan.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M19.003 3A2 2 0 0 1 21 5v2h-2V5.414L17.414 7h-2.828l2-2h-2.172l-2 2H9.586l2-2H9.414l-2 2H3V5a2 2 0 0 1 2-2h14.003ZM3 9v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9H3Zm2-2.414L6.586 5H5v1.586Zm4.553 4.52a1 1 0 0 1 1.047.094l4 3a1 1 0 0 1 0 1.6l-4 3A1 1 0 0 1 9 18v-6a1 1 0 0 1 .553-.894Z"
                                     clip-rule="evenodd" />
@@ -153,14 +154,27 @@
                     <li class="transition hover:scale-105">
                         <a href="{{ route('bpp.kelas.index') }}"
                             class="{{ Route::is('bpp.kelas.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="{{ Route::is('bpp.kelas.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                viewBox="0 0 24 24">
+                            <svg class="{{ Route::is('bpp.kelas.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white"
+                                aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
                                     d="M11 4.717c-2.286-.58-4.16-.756-7.045-.71A1.99 1.99 0 0 0 2 6v11c0 1.133.934 2.022 2.044 2.007 2.759-.038 4.5.16 6.956.791V4.717Zm2 15.081c2.456-.631 4.198-.829 6.956-.791A2.013 2.013 0 0 0 22 16.999V6a1.99 1.99 0 0 0-1.955-1.993c-2.885-.046-4.76.13-7.045.71v15.081Z"
                                     clip-rule="evenodd" />
                             </svg>
                             <span class="flex-1 ms-3 whitespace-nowrap">Kelas Offline</span>
+                        </a>
+                    </li>
+                    <li class="transition hover:scale-105">
+                        <a href="{{ route('bpp.pendaftar.index') }}"
+                            class="{{ Route::is('bpp.pendaftar.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                            <svg class="{{ Route::is('bpp.pendaftar.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                viewBox="0 0 24 24">
+                                <path fill-rule="evenodd"
+                                    d="M9 2a1 1 0 0 0-1 1H6a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-2a1 1 0 0 0-1-1H9Zm1 2h4v2h1a1 1 0 1 1 0 2H9a1 1 0 0 1 0-2h1V4Zm5.707 8.707a1 1 0 0 0-1.414-1.414L11 14.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <span class="flex-1 ms-3 whitespace-nowrap">Pendaftar Kelas</span>
                         </a>
                     </li>
                 @endrole

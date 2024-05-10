@@ -16,8 +16,8 @@ class Pendaftar extends Model
         'no_telpon',
         'motivasi',
     ];
-    
+
     public function kelas() {
-        return $this->belongsTo(KelasOffline::class. 'kelas_offline_id');
+        return $this->belongsTo(KelasOffline::class, 'kelas_offline_id');
     }
 }

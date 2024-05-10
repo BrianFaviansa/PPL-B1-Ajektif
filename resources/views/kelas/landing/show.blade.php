@@ -1,9 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
+    @if (session('success'))
+        <div class="fixed inset-0 z-40 bg-black bg-opacity-25 backdrop-blur-sm ngeblur"></div>
+        <div id="default-modal" tabindex="-1" aria-hidden="false" data-modal-show="default-modal"
+            class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-full">
+            <div class="relative p-4 w-full max-w-2xl max-h-full mx-auto">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700 mx-auto">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            {{ session('success') }}
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-hide="default-modal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="p-4 md:p-5 space-y-4">
+                        <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
+                            Silahkan masuk grupp Whatsapp berikut <a
+                                class="text-blue-500 dark:text-blue-400 underline hover:cursor-pointer"
+                                href="https://bit.ly/JalsMediaGrup01">https://bit.ly/JalsMediaGrup01</a> agar mempermudah
+                            komunikasi
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="">
-        <img class="h-auto max-h-[500px] max-w-full mx-auto pt-8" src="{{ asset('storage/poster_kelass/' . $kelasOffline->poster) }}"
-            alt="Poster Kelas">
+        <img class="h-auto max-h-[500px] max-w-full mx-auto pt-8"
+            src="{{ asset('storage/poster_kelass/' . $kelasOffline->poster) }}" alt="Poster Kelas">
     </div>
     <div class="py-6 mx-auto">
         <h2 class="text-3xl font-bold md:text-4xl md:font-extrabold dark:text-white">{{ $kelasOffline->nama }}</h2>
@@ -25,7 +62,7 @@
                     d="M4 10h16M8 14h8m-4-7V4M7 7V4m10 3V4M5 20h14a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1Z" />
             </svg>
             <span class="font-normal md:text-lg text-slate-950 dark:text-gray-400 text-center">
-                {{ $kelasOffline->tgl_pelaksanaan->format('d F Y') }}</span>
+                {{ $kelasOffline->tgl_pelaksanaan->format('l, d F Y') }}</span>
         </div>
         <div class="flex flex-row justify-start">
             <svg class="w-6 h-6 text-gray-800 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -52,10 +89,11 @@
         <h3 class="text-3xl font-bold text-gray-950">Ringkasan Kelas</h3>
         <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify text-base md:text-2xl">{!! $kelasOffline->ringkasan !!}</p>
     </div>
-    <div class="container mx-auto">
+    <div class="container mx-auto mb-4">
         <h3 class="text-3xl font-bold text-gray-950">Daftar Kelas</h3>
         <form action="{{ route('pendaftar.store') }}" method="POST">
             @csrf
+            <input type="hidden" name="kelas_id" value="{{ $kelasOffline->id }}">
             <div class="my-4">
                 <label for="nik" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">NIK</label>
                 <input type="text" id="nik" name="nik"
@@ -80,7 +118,7 @@
                     Telepon</label>
                 <input type="text" id="no_telpon" name="no_telpon"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="ex : 08123456789" required/>
+                    placeholder="ex : 08123456789" required />
                 @error('no_telpon')
                     <p class="mt-2 text-sm text-red-600 dark:text-red-500">{{ $message }}</p>
                 @enderror
@@ -88,7 +126,7 @@
             <div class="my-4">
                 <label for="motivasi" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Motivasi Mengikuti Kelas</label>
-                <textarea id="motivasi" rows="4"
+                <textarea id="motivasi" rows="4" name="motivasi"
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Tuliskan motivasi mengikut kelas"></textarea>
             </div>
@@ -97,6 +135,8 @@
                 type="button">
                 Ikut Kelas
             </button>
+            <a href="{{ route('landing.kelas.index') }}"
+                class="py-2.5 px-5 me-2 mb-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Kembali</a>
             <div id="popup-modal" tabindex="-1"
                 class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                 <div class="relative p-4 w-full max-w-md max-h-full">
@@ -106,18 +146,19 @@
                             data-modal-hide="popup-modal">
                             <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                             <span class="sr-only">Close modal</span>
                         </button>
                         <div class="p-4 md:p-5 text-center">
                             <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                             </svg>
-                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Anda yakin data sudah benar?</h3>
+                            <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Anda yakin data sudah
+                                benar?</h3>
                             <button data-modal-hide="popup-modal" type="submit"
                                 class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                                 Ya
@@ -128,9 +169,20 @@
                     </div>
                 </div>
         </form>
+
     </div>
-    <div class="mt-6 mb-6">
-        <a href="{{ route('landing.kelas.index') }}"
-            class="py-2.5 px-5 me-2 mb-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Kembali</a>
-    </div>
+
+    <script>
+        // Dapatkan elemen modal dan tombol close
+        const modal = document.getElementById('default-modal');
+        const closeBtn = modal.querySelector('[data-modal-hide="default-modal"]');
+        const ngeblur = document.querySelector('.ngeblur');
+
+        // Tambahkan event listener pada tombol close
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            ngeblur.classList.toggle('hidden')
+        });
+    </script>
 @endsection

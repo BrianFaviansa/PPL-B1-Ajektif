@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/perjanjian/{pengajuan}/unggah-poktan', [PerjanjianController::class, 'unggahPoktan'])->name('perjanjian.unggahSuratPoktan');
     });
 
-    Route::middleware('role:poktan|dinas')->group(function() {
+    Route::middleware('role:poktan|dinas')->group(function () {
         Route::get('/perjanjian', [PerjanjianController::class, 'index'])->name('perjanjian.index');
         Route::get('/perjanjian/{pengajuan}', [PerjanjianController::class, 'show'])->name('perjanjian.show');
     });
@@ -90,9 +90,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/bpp/kelas/{kelasOffline}/edit', [KelasOfflineController::class, 'edit'])->name('bpp.kelas.edit');
         Route::put('/bpp/kelas/{kelasOffline}', [KelasOfflineController::class, 'update'])->name('bpp.kelas.update');
         Route::delete('/bpp/kelas/{kelasOffline}', [KelasOfflineController::class, 'destroy'])->name('bpp.kelas.destroy');
+
+        Route::get('/bpp/pendaftar', [PendaftarController::class, 'index'])->name('bpp.pendaftar.index');
     });
-
-
 });
 
 Route::get('/pelatihan-online', [PelatihanOnlineController::class, 'indexLanding'])->name('landing.pelatihan.index');
@@ -101,4 +101,4 @@ Route::get('/pelatihan-online/{pelatihanOnline}', [PelatihanOnlineController::cl
 Route::get('/kelas-offline', [KelasOfflineController::class, 'indexLanding'])->name('landing.kelas.index');
 Route::get('/kelas-offline/{kelasOffline}', [KelasOfflineController::class, 'showKelasLanding'])->name('landing.kelas.show');
 
-Route::post('/pendaftar',[PendaftarController::class, 'store' ])->name('pendaftar.store');
+Route::post('/pendaftar', [PendaftarController::class, 'store'])->name('pendaftar.store');

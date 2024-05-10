@@ -6,47 +6,47 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Nomer Registrasi
+                    NIK
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Nama
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Desa
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Alamat
-                </th>
-                <th scope="col" class="px-6 py-3">
                     No Telpon
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Motivasi
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nama Kelas
                 </th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($bpps as $bpp)
+            @forelse ($pendaftars as $pendaftar)
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 text-sm md:text-base">
                     <td scope="row" class="px-6 py-4">
                         {{ $loop->iteration }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $bpp->no_reg }}
+                        {{ $pendaftar->nik }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $bpp->nama }}
+                        {{ $pendaftar->nama }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $bpp->desa->nama }}
+                        {{ $pendaftar->no_telpon }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $bpp->alamat }}
+                        {{ $pendaftar->motivasi }}
                     </td>
                     <td class="px-6 py-4">
-                        {{ $bpp->no_telpon }}
+                        {{ $pendaftar->kelas->nama }}
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td class="text-center text-slate-700 text-base">Tidak ada data bpp.</td>
+                    <td colspan="6" class="text-center text-slate-700 text-base">Tidak ada data pendaftar kelas.</td>
                 </tr>
             @endforelse
         </tbody>
