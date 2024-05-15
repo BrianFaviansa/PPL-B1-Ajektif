@@ -51,7 +51,7 @@ class KelasOfflineController extends Controller
             'ringkasan' => 'required',
             'poster' => 'required|image|mimes:jpeg,png,jpg|dimensions:max_width=1920,max_height=1080',
             'tgl_pelaksanaan' => 'required|date',
-            'jam_pelaksanaan' => 'required|time',
+            'jam_pelaksanaan' => 'required',
             'lokasi_pelaksanaan' => 'required',
         ]);
 
@@ -125,6 +125,8 @@ class KelasOfflineController extends Controller
      */
     public function destroy(KelasOffline $kelasOffline)
     {
-        //
+        $kelasOffline->delete();
+
+        return redirect()->route('bpp.kelas.index')->with('success', 'Kelas berhasil dihapus!');
     }
 }
