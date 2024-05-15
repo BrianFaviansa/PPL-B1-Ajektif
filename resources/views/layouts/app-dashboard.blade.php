@@ -198,8 +198,8 @@
                     </li>
                     <li class="transition hover:scale-105">
                         <a href="{{ route('akun.create') }}"
-                            class="{{ Route::is('akun.*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
-                            <svg class="{{ Route::is('akun.*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white"
+                            class="{{ Route::is('akun.create*') ? 'text-white bg-green-600 hover:text-white hover:bg-green-600' : '' }} flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group">
+                            <svg class="{{ Route::is('akun.create*') ? 'text-white' : '' }} w-6 h-6 text-gray-800 dark:text-white"
                                 aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd"
