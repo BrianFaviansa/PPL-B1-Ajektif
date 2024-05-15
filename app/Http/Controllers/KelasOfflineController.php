@@ -51,7 +51,7 @@ class KelasOfflineController extends Controller
             'ringkasan' => 'required',
             'poster' => 'required|image|mimes:jpeg,png,jpg|dimensions:max_width=1920,max_height=1080',
             'tgl_pelaksanaan' => 'required|date',
-            'jam_pelaksanaan' => 'required',
+            'jam_pelaksanaan' => 'required|time',
             'lokasi_pelaksanaan' => 'required',
         ]);
 

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class KelasOffline extends Model
 {
@@ -20,6 +21,13 @@ class KelasOffline extends Model
     protected $dates = [
         'tgl_pelaksanaan',
     ];
+
+    protected $timeFormat = 'H:i';
+
+    public function getJamPelaksanaanAttribute($value)
+    {
+        return Carbon::parse($value);
+    }
 
     public function penanggung_jawab()
     {

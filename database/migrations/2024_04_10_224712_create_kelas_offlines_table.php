@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('ringkasan');
             $table->string('poster');
             $table->date('tgl_pelaksanaan');
-            $table->string('jam_pelaksanaan');
+            $table->time('jam_pelaksanaan');
             $table->string('lokasi_pelaksanaan');
             $table->timestamps();
         });

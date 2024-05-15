@@ -53,7 +53,8 @@
                     d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
             <span class="font-normal md:text-lg text-slate-950 dark:text-gray-400 text-center">
-                {{ $kelasOffline->jam_pelaksanaan }}</span>
+
+                {{ $kelasOffline->jam_pelaksanaan->format('H:i') }}</span>
         </div>
         <div class="flex flex-row justify-start">
             <svg class="w-6 h-6 text-gray-800 dark:text-white mr-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +91,7 @@
         <p class="mb-3 text-gray-500 dark:text-gray-400 text-justify text-base md:text-2xl">{!! $kelasOffline->ringkasan !!}</p>
     </div>
     <a href="{{ route('landing.kelas.index') }}"
-    class="py-2.5 px-5 me-2 mb-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Kembali</a>
+        class="py-2.5 px-5 me-2 mb-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Kembali</a>
     @guest
         <div class="container mx-auto mb-4 mt-6">
             <h3 class="text-3xl font-bold text-gray-950">Daftar Kelas</h3>
