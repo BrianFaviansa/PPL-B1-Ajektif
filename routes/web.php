@@ -45,7 +45,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:poktan|dinas')->group(function () {
         Route::get('/perjanjian', [PerjanjianController::class, 'index'])->name('perjanjian.index');
-        Route::get('/perjanjian/{pengajuan}', [PerjanjianController::class, 'show'])->name('perjanjian.show');
+        Route::get('/perjanjian/{pengajuan:kode}', [PerjanjianController::class, 'show'])->name('perjanjian.show');
     });
 
     Route::middleware(['role:bpp|dinas'])->group(function () {
@@ -68,26 +68,26 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware('role:poktan|bpp|dinas')->group(function () {
         Route::get('/pengajuan', [PengajuanController::class, 'index'])->name('pengajuan.index');
-        Route::get('/pengajuan/{pengajuan}', [PengajuanController::class, 'show'])->name('pengajuan.show');
-        Route::get('/akun', [UserController::class, 'index'])->name('akun.index');
+        Route::get('/pengajuan/{pengajuan:kode}', [PengajuanController::class, 'show'])->name('pengajuan.show');
+        Route::get('/akun/{user:nama}', [UserController::class, 'index'])->name('akun.index');
         Route::put('/akun/{user}', [UserController::class, 'update'])->name('akun.update');
-        Route::get('/akun/{user}', [UserController::class, 'show'])->name('akun.show');
+        Route::get('/akun/show/{user:nama}', [UserController::class, 'show'])->name('akun.show');
     });
 
     Route::middleware('role:bpp')->group(function () {
         Route::get('/bpp/pelatihan', [PelatihanOnlineController::class, 'index'])->name('bpp.pelatihan.index');
         Route::get('/bpp/pelatihan/create', [PelatihanOnlineController::class, 'create'])->name('bpp.pelatihan.create');
-        Route::get('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'show'])->name('bpp.pelatihan.show');
+        Route::get('/bpp/pelatihan/{pelatihanOnline:nama}', [PelatihanOnlineController::class, 'show'])->name('bpp.pelatihan.show');
         Route::post('/bpp/pelatihan', [PelatihanOnlineController::class, 'store'])->name('bpp.pelatihan.store');
-        Route::get('/bpp/pelatihan/{pelatihanOnline}/edit', [PelatihanOnlineController::class, 'edit'])->name('bpp.pelatihan.edit');
+        Route::get('/bpp/pelatihan/{pelatihanOnline:nama}/edit', [PelatihanOnlineController::class, 'edit'])->name('bpp.pelatihan.edit');
         Route::put('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'update'])->name('bpp.pelatihan.update');
         Route::delete('/bpp/pelatihan/{pelatihanOnline}', [PelatihanOnlineController::class, 'destroy'])->name('bpp.pelatihan.destroy');
 
         Route::get('/bpp/kelas', [KelasOfflineController::class, 'index'])->name('bpp.kelas.index');
         Route::get('/bpp/kelas/create', [KelasOfflineController::class, 'create'])->name('bpp.kelas.create');
-        Route::get('/bpp/kelas/{kelasOffline}', [KelasOfflineController::class, 'show'])->name('bpp.kelas.show');
+        Route::get('/bpp/kelas/{kelasOffline:nama}', [KelasOfflineController::class, 'show'])->name('bpp.kelas.show');
         Route::post('/bpp/kelas', [KelasOfflineController::class, 'store'])->name('bpp.kelas.store');
-        Route::get('/bpp/kelas/{kelasOffline}/edit', [KelasOfflineController::class, 'edit'])->name('bpp.kelas.edit');
+        Route::get('/bpp/kelas/{kelasOffline:nama}/edit', [KelasOfflineController::class, 'edit'])->name('bpp.kelas.edit');
         Route::put('/bpp/kelas/{kelasOffline}', [KelasOfflineController::class, 'update'])->name('bpp.kelas.update');
         Route::delete('/bpp/kelas/{kelasOffline}', [KelasOfflineController::class, 'destroy'])->name('bpp.kelas.destroy');
 

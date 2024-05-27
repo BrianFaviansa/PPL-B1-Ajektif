@@ -12,9 +12,8 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, User $user)
     {
-        $user = auth()->user();
         $desas = Desa::all();
 
         if ($request->user()->hasRole('poktan')) {
@@ -119,15 +118,6 @@ class UserController extends Controller
             return view('profil.bpp.show', compact('user', 'pelihat'));
         }
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      */

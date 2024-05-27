@@ -46,7 +46,7 @@
                         {{ $pengajuan->kode }}
                     </td>
                     <td class="px-6 py-4">
-                        <a class="underline text-green-700" href="{{ route('akun.show', $pengajuan->user->id) }}">{{ $pengajuan->user->nama }}</a>
+                        <a class="underline text-green-700" href="{{ route('akun.show', $pengajuan->user) }}">{{ $pengajuan->user->nama }}</a>
                     </td>
                     <td class="px-6 py-4">
                         @if ($pengajuan->dokumen_pengajuan)

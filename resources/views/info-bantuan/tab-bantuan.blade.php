@@ -29,7 +29,7 @@
             <h2 class="mb-5 text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white text-center">Syarat dan
                 Ketentuan
                 Penerima Bantuan</h2>
-            <p class="mb-3 mt-3 text-gray-500 text-lg md:text-2xl dark:text-gray-400 list-decimal text-justify">{!! $bantuan->syarat !!}</p>
+            <p class="mb-3 mt-3 text-gray-500 text-lg md:text-2xl dark:text-gray-400 list-item text-justify">{!! $bantuan->syarat !!}</p>
         </div>
     </div>
 </div>
