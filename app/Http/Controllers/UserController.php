@@ -132,13 +132,16 @@ class UserController extends Controller
             'jml_anggota' => 'nullable',
             'no_telpon' => 'required',
             'username' => 'required',
-            'password' => 'nullable|min:8',
+            'oldPassword' => 'nullable|min:5',
+            'password' => 'nullable|min:5|confirmed',
         ]);
 
-        if ($request->has('password') && $request->password != '') {
-            $validatedData['password'] = bcrypt($request->password);;
-        } else {
-            $validatedData['password'] = $user->password;
+        if ($request->oldPassword && $request->password) {
+            if (Hash::check($request->oldPassword, $user->password)) {
+                $validatedData['password'] = Hash::make($request->password);
+            } else {
+                return redirect()->route('akun.index', $user)->with('error', 'Password lama tidak sesuai!');
+            }
         }
 
         $user->update($validatedData);

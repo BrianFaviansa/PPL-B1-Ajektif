@@ -3,6 +3,9 @@
 @section('content')
     <h2 class="text-4xl font-semibold dark:text-white mb-8 -mt-4">Ubah Profil</h2>
 
+    @if (session('error'))
+        @include('layouts.partials.error-message')
+    @endif
 
     <form action="{{ route('akun.update', $user) }}" method="POST" id="form-profil">
         @csrf
@@ -65,14 +68,27 @@
                 value="{{ $user->username }}" required />
         </div>
         <div class="my-4">
-            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
-            <input type="text" name="password" id="password"
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password Lama</label>
+            <input type="password" name="oldPassword" id="oldPassword"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-                <p id="helper-text-explanation" class="mt-1 text-sm text-gray-500 dark:text-gray-400">Biarkan kosong jika tidak ingin mengubah password</p>
+        </div>
+        <div class="my-4">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password Baru</label>
+            <input type="password" name="password" id="password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+
+        </div>
+        <div class="my-4">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konfirmasi Password
+                Baru</label>
+            <input type="password" name="password_confirmation" id="password_confirmation"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <p id="helper-text-explanation" class="mt-1 text-sm text-gray-500 dark:text-gray-400">Biarkan isian password
+                kosong jika tidak
+                ingin mengubah password</p>
         </div>
         <a href="{{ route('dashboard') }}"
             class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Kembali</a>
         @include('layouts.partials.modal-edit')
     </form>
 @endsection
-
