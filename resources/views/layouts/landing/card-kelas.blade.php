@@ -16,7 +16,7 @@
                     d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
             <span class="font-normal text-slate-950 dark:text-gray-400 text-center">
-                {{ $kelasOffline->jam_pelaksanaan }}</span>
+                {{ $kelasOffline->jam_pelaksanaan->format('H:i') }}</span>
         </div>
         <div class="flex flex-row justify-start ml-10 my-4">
             <svg class="w-6 h-6 text-gray-800 dark:text-white mr-2" aria-hidden="true"
